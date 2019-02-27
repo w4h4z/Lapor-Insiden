@@ -3,8 +3,8 @@
       <!-- Content Header (Page header) -->
       <section class="content-header">
         <h1>
-          Page Header
-          <small>Optional description</small>
+          Aduan
+          <!-- <small>Optional description</small> -->
         </h1>
         <ol class="breadcrumb">
           <li><a href="#"><i class="fa fa-dashboard"></i> Level</a></li>
@@ -16,9 +16,9 @@
       <section class="content container-fluid">
 
         <div class="box box-solid">
-          <div class="box-header with-border">
-            <h3 class="box-title">Expandable</h3>
-          </div>
+          <!-- <div class="box-header with-border">
+            <h3 class="box-title">Aduan</h3>
+          </div> -->
           <!-- /.box-header -->
           <div class="box-body">
             <table id="example1" class="table table-bordered table-striped table-hover table-responsive">
@@ -69,3 +69,14 @@
       <!-- /.content -->
     </div>
     <!-- /.content-wrapper -->
+
+    <script>
+        $('#example1').DataTable({
+          'paging'      : true,
+          'lengthChange': true,
+          'searching'   : true,
+          'ordering'    : true,
+          'info'        : true,
+          'autoWidth'   : true
+        })
+    </script>
