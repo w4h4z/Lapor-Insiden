@@ -11,8 +11,7 @@ class Beranda extends CI_Controller {
 
 	public function index()
 	{
-		$data['main_view'] = 'v_beranda';
-		$this->load->view('template', $data);
+		$this->load->view('v_beranda');
 	}
 
 	public function lapor()
