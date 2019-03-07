@@ -217,27 +217,66 @@
         <div class="tab-content" id="myTabContent">
           <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
             <p>
-              Register
+              <form>
+                <div class="form-group row">
+                  <label for="inputEmail3" class="col-sm-12 col-form-label">Nama</label>
+                  <div class="col-sm-12">
+                    <input type="text" class="form-control" id="inputNama" placeholder="Nama">
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label for="inputEmail3" class="col-sm-12 col-form-label">No Telepon</label>
+                  <div class="col-sm-12">
+                    <input type="text" class="form-control" id="inputTelepon" placeholder="No Telepon">
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label for="inputEmail3" class="col-sm-12 col-form-label">No Identitas(SIM/KTP)</label>
+                  <div class="col-sm-12">
+                    <input type="number" class="form-control" id="inputId" placeholder="No Identitas">
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label for="inputEmail3" class="col-sm-12 col-form-label">Email</label>
+                  <div class="col-sm-12">
+                    <input type="email" class="form-control" id="inputEmail" placeholder="Email">
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label for="inputPassword3" class="col-sm-12 col-form-label">Password</label>
+                  <div class="col-sm-12">
+                    <input type="password" class="form-control" id="inputPassword" placeholder="Password">
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <div class="col-sm-6">
+                    <button type="submit" class="btn btn-danger btn-block">Batal</button>
+                  </div>
+                  <div class="col-sm-6">
+                    <button type="submit" class="btn btn-info btn-block">Daftar</button>
+                  </div>
+                </div>
+              </form>
             </p>
           </div>
           <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
             <p>
-            <form>
+            <form method="post" action="<?php echo base_url('beranda/login'); ?>">
               <div class="form-group row">
-                <label for="inputEmail3" class="col-sm-12 col-form-label">Username</label>
+                <label for="inputEmail3" class="col-sm-12 col-form-label">Email</label>
                 <div class="col-sm-12">
-                  <input type="email" class="form-control" id="inputEmail3" placeholder="Username">
+                  <input type="email" class="form-control" name="emailMasuk" id="inputEmailMasuk" placeholder="Email">
                 </div>
               </div>
               <div class="form-group row">
                 <label for="inputPassword3" class="col-sm-12 col-form-label">Password</label>
                 <div class="col-sm-12">
-                  <input type="password" class="form-control" id="inputPassword3" placeholder="Password">
+                  <input type="password" class="form-control" name="passwordMasuk" id="inputPasswordMasuk" placeholder="Password">
                 </div>
               </div>
               <div class="form-group row">
                 <div class="col-sm-6">
-                  <button type="submit" class="btn btn-danger btn-block">Batal</button>
+                  <button type="reset" class="btn btn-danger btn-block">Batal</button>
                 </div>
                 <div class="col-sm-6">
                   <button type="submit" class="btn btn-info btn-block">Masuk</button>

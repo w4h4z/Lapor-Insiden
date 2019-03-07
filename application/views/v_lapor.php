@@ -20,182 +20,65 @@
       <div class="col-sm-8">
         <form class="form-horizontal" id="form-lapor">
           <div class="form-group">
-            <label class="col-sm-4 control-label">Tipe *</label>
+            <label class="col-sm-4 control-label">Perkiraan Waktu Kejadian</label>
             <div class="col-sm-8">
-              <select class="form-control" onchange="tipe()" id="tipe1">
-                <option>Pilih Tipe</option>
-                <option value="bisnis">Bisnis</option>
-                <option value="perorangan">Perorangan</option>
-                <option value="pemerintahan">Pemerintahan</option>
+              <input type="date" name="waktu_kejadian" class="form-control">
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-4 control-label">Deskripsi Umum</label>
+            <div class="col-sm-8">
+              <textarea class="form-control" placeholder="Deskripsi Umum" style="height: 150px"></textarea>
+            </div>
+          </div>  
+          <div class="form-group">
+            <label class="col-sm-4 control-label">Deskripsi Aset</label>
+            <div class="col-sm-8">
+              <hr>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-4 control-label">Nama Keterangan</label>
+            <div class="col-sm-8">
+              <select class="form-control">
+                <option value="">Pilih Jenis Aduan Siber</option>
+                <option value="">Account Comoromise (Pembajakan Akun)</option>
+                <option value="">Data Theft (Pencurian Data)</option>
+                <option value="">Exploitaion of Weak Configuration (Eksploitasi pada sistem yang lemah)</option>
+                <option value="">Exploitaion of Weak Network Architecture (Eksploitasi pada arsitektur jaringan yang lemah)</option>
+                <option value="">Patched Software Exploitation (Eksploitasi pada Perangkat Lunak yang telah di Patch)</option>
+                <option value="">Network Penetration (Penetrasi Jaringan)</option>
+                <option value="">Service Disruption (Gangguan Layanan)</option>
+                <option value="">Spoofing or DNS Poisoning (Pengalihan DNS)</option>
+                <option value="">Unauthorized System Access (Akses sistem yang ilegal/tidak sah)</option>
+                <option value="">Unintentional Information System Exposure (Pembukaan Informasi yang tidak disengaja)</option>
+                <option value="">Unpatched Vulnerable Software Exploitation (Eksploitasi Kerentanan Software yang tidak di Patch)</option>
+                <option value="">Website Defacement (Perusakan Tampilan Situs Web)</option>
+                <option value="">Wireless Access Point Exploitation (Eksploitasi pada WAP)</option>
+                <option value="">Kerentanan (Vulnerability Disclosure)</option>
+                <option value="">Phising</option>
+                <option value="">Indikator Serangan</option>
+                <option value="">Malware</option>
+                <option value="">Konten Negatif</option>
               </select>
             </div>
           </div>
-          <p id="individual-ans" style="display: none">
-            Individual Australians should report cyber security incidents to the Australian Cybercrime Online Reporting Network (ACORN). ACORN is a secure reporting and referral service for cybercrime and any online incidents that may be in breach of Australian law.
-          </p>
-          <div class="form-group" id="tipe-bisnis1" style="display: none">
-            <label class="col-sm-4 control-label">Tipe Bisnis *</label>
+          <div class="form-group">
+            <label class="col-sm-4 control-label">Lokasi</label>
             <div class="col-sm-8">
-              <select class="form-control" id="select-tipe-bisnis" onchange="tipeBisnis()">
-                <option value="">Pilih Tipe Bisnis</option>
-                <option value="kecil">Kecil (Di bawah 20 pegawai)</option>
-                <option value="sedang">Sedang (20 sampai 200 pegawai)</option>
-                <option value="besar">Besar (Lebih dari 200 pegawai)</option>
-                <option value="keamananIndustri">Program Keamanan Industri Pertahanan</option>
-              </select>
+              <input type="text" name="lokasi" class="form-control" placeholder="Lokasi">
             </div>
           </div>
-          <div class="form-group" id="tipe-pemerintahan" style="display: none">
-            <label class="col-sm-4 control-label">Tipe Pemerintahan *</label>
+          <div class="form-group">
+            <label class="col-sm-4 control-label">Identitas Pemilik/Penanggung Jawab</label>
             <div class="col-sm-8">
-              <select class="form-control" id="select-tipe-pemerintahan" onchange="tipePemerintahan()">
-                <option value="">Pilih Tipe Pemerintahan</option>
-                <option value="federal">Federal</option>
-                <option value="state">State</option>
-                <option value="local">Local</option>
-              </select>
+              <input type="text" name="id_pemilik" class="form-control" placeholder="Identitas Pemilik">
             </div>
           </div>
-          <div class="form-group bisnis-form" style="display: none" id="abnacn">
-            <label class="col-sm-4 control-label">ABN/ACN</label>
-            <div class="col-sm-8">
-              <input type="text" name="abn" class="form-control">
-            </div>
-          </div>
-          <div class="form-group bisnis-form" style="display: none">
-            <label class="col-sm-4 control-label">Given Name *</label>
-            <div class="col-sm-8">
-              <input type="text" name="" class="form-control">
-            </div>
-          </div>
-          <div class="form-group bisnis-form" style="display: none">
-            <label class="col-sm-4 control-label">Family Name *</label>
-            <div class="col-sm-8">
-              <input type="text" name="" class="form-control">
-            </div>
-          </div>
-          <div class="form-group bisnis-form" style="display: none">
-            <label class="col-sm-4 control-label">Organisation *</label>
-            <div class="col-sm-8">
-              <input type="text" name="" class="form-control">
-            </div>
-          </div>
-          <div class="form-group bisnis-form" style="display: none">
-            <label class="col-sm-4 control-label">Position *</label>
-            <div class="col-sm-8">
-              <input type="text" name="" class="form-control">
-            </div>
-          </div>
-          <div class="form-group bisnis-form" style="display: none">
-            <label class="col-sm-4 control-label">Phone *</label>
-            <div class="col-sm-8">
-              <input type="text" name="" class="form-control">
-            </div>
-          </div>
-          <div class="form-group bisnis-form" style="display: none">
-            <label class="col-sm-4 control-label">Mobile *</label>
-            <div class="col-sm-8">
-              <input type="text" name="" class="form-control">
-            </div>
-          </div>
-          <div class="form-group bisnis-form" style="display: none">
-            <label class="col-sm-4 control-label">Email *</label>
-            <div class="col-sm-8">
-              <input type="email" name="" class="form-control">
-            </div>
-          </div>
-          <div class="form-group bisnis-form" style="display: none">
-            <label class="col-sm-4 control-label">Incident Details *</label>
-            <div class="col-sm-8">
-              <textarea class="form-control" style="height: 200px"></textarea>
-            </div>
-          </div>
-          <div class="form-group bisnis-form" style="display: none">
-            <label class="col-sm-4 control-label">Time and date of incident *</label>
-            <div class="col-sm-8">
-              <input type="date" name="" class="form-control">
-            </div>
-          </div>
-          <div class="form-group bisnis-form" style="display: none">
-            <label class="col-sm-4 control-label">Has the incident been resolved? *</label>
-            <div class="col-sm-8">
-              <div class="row">
-                <div class="radio col-sm-6">
-                <label>
-                  <input type="radio" name="optionsRadios" id="optionsRadios1" value="Yes">
-                  Yes
-                </label>
-              </div>
-              <div class="radio col-sm-6">
-                <label>
-                  <input type="radio" name="optionsRadios" id="optionsRadios2" value="No">
-                  No
-                </label>
-              </div>
-              </div>
-            </div>
-          </div>
-          <div class="form-group bisnis-form" style="display: none">
-            <label class="col-sm-4 control-label">Has the matter been reported to law enforcement? *</label>
-            <div class="col-sm-8">
-              <div class="row">
-                <div class="radio col-sm-6">
-                <label>
-                  <input type="radio" name="optionsRadios" id="optionsRadios1" value="Yes">
-                  Yes
-                </label>
-              </div>
-              <div class="radio col-sm-6">
-                <label>
-                  <input type="radio" name="optionsRadios" id="optionsRadios2" value="No">
-                  No
-                </label>
-              </div>
-              </div>
-            </div>
-          </div>
-          <div class="form-group bisnis-form" style="display: none">
-            <label class="col-sm-4 control-label">Do you require assistance from the ACSC? *</label>
-            <div class="col-sm-8">
-              <div class="row">
-                <div class="radio col-sm-6">
-                <label>
-                  <input type="radio" name="optionsRadios" id="optionsRadios1" value="Yes">
-                  Yes
-                </label>
-              </div>
-              <div class="radio col-sm-6">
-                <label>
-                  <input type="radio" name="optionsRadios" id="optionsRadios2" value="No">
-                  No
-                </label>
-              </div>
-              </div>
-            </div>
-          </div>
-          <div class="form-group bisnis-form" style="display: none">
-            <label class="col-sm-4 control-label">Notifiable data breaches</label>
-            <div class="col-sm-8">
-              <p>
-                Under the Notifiable Data Breaches scheme, your organisation may have notification obligations when a data breach is likely to result in serious harm to any individuals whose personal information is involved in the breach.
-              </p>
-              <p>
-                To understand your obligations under the Notifiable Data Breaches scheme, and to separately report a data breach to the Office of the Australian Information Commissioner, see their Notifiable Data Breaches scheme page.
-              </p>
-            </div>
-          </div>
-          <div class="form-group bisnis-form" style="display: none">
-            <label class="col-sm-4 control-label">Human test:</label>
-            <div class="col-sm-8">
-              <input type="text" name="" class="form-control">
-            </div>
-          </div>
-
-          <button class="btn btn-success btn-flat" style="display: none;margin-left: auto;margin-right: auto; width: 400px; margin-bottom: 10px" id="btn-submit" >Submit Form</button>
-          <button class="btn btn-warning btn-flat" style="display: none;margin-left: auto;margin-right: auto; width: 400px; margin-bottom: 10px" id="btn-reset" onclick="resetForm()">Reset Form</button>
+          <button class="btn btn-success btn-flat btn-block" style="margin-left: auto;margin-right: auto; width: 400px; margin-bottom: 10px" id="btn-submit" >Submit Form</button>
+          <button class="btn btn-warning btn-flat btn-block" style="margin-left: auto;margin-right: auto; width: 400px; margin-bottom: 10px" id="btn-reset" onclick="resetForm()">Reset Form</button> 
         </form>
       </div>
-
       <div class="col-sm-4">
         <div class="box box-info">
           <div class="box-header with-border">
@@ -225,62 +108,5 @@
 <script type="text/javascript">
     function resetForm(){
       $('#form-lapor').trigger("reset");
-      $('#tipe-bisnis1').css('display','none');
-      $('.bisnis-form').css('display','none');
-      $('#individual-ans').css('display','none');
-      $('#btn-submit').css('display','none');
-    }
-
-    function tipe() {
-      var tipe = $('#tipe1').val();
-      if (tipe == 'bisnis') {
-        $('#btn-reset').css('display', 'block');
-        $('#tipe-bisnis1').css('display','block');
-        $('#individual-ans').css('display','none');
-        $('#tipe-pemerintahan').css('display','none');
-        $('#btn-submit').css('display','none');
-      } else if (tipe == 'perorangan'){
-        $('#btn-reset').css('display', 'block');
-        $('#individual-ans').css('display','block');
-        $('.bisnis-form').css('display','none');
-        $('#tipe-bisnis1').css('display','none');
-        $('#tipe-pemerintahan').css('display','none');
-        $('#btn-submit').css('display','none');
-      } else if(tipe == 'pemerintahan') {
-        $('#btn-reset').css('display', 'block');
-        $('#tipe-pemerintahan').css('display','block');
-        $('#individual-ans').css('display','none');
-        $('#tipe-bisnis1').css('display','none');
-        $('#btn-submit').css('display','none');
-      } else {
-        $('#tipe-bisnis1').css('display','none');
-        $('#tipe-pemerintahan').css('display','none');
-        $('#individual-ans').css('display','none');
-        $('.bisnis-form').css('display','none');
-        $('#btn-submit').css('display','none');
-      }
-    }
-
-    function tipeBisnis() {
-      var tipeBisnis = $('#select-tipe-bisnis').val();
-      if (tipeBisnis != '') {
-        $('.bisnis-form').css('display', 'block');
-        $('#btn-submit').css('display','block');
-      } else {
-        $('.bisnis-form').css('display','none');
-        $('#btn-submit').css('display','none');
-      }
-    }
-
-    function tipePemerintahan() {
-      var tipePemerintahan = $('#select-tipe-pemerintahan').val();
-      if (tipePemerintahan != '') {
-        $('.bisnis-form').css('display', 'block');
-        $('#abnacn').css('display','none');
-        $('#btn-submit').css('display','block');
-      } else {
-        $('.bisnis-form').css('display','none');
-        $('#btn-submit').css('display','none');
-      }
     }
 </script>
