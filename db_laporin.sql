@@ -1,13 +1,15 @@
 -- phpMyAdmin SQL Dump
--- version 4.6.5.2
+-- version 4.7.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 27 Feb 2019 pada 18.59
--- Versi Server: 10.1.21-MariaDB
--- PHP Version: 7.1.1
+-- Generation Time: 07 Mar 2019 pada 15.38
+-- Versi Server: 10.1.25-MariaDB
+-- PHP Version: 7.1.7
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
+START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -94,7 +96,8 @@ CREATE TABLE `aduan_siber` (
 --
 
 INSERT INTO `aduan_siber` (`id_aduan`, `id_pelapor`, `id_admin1`, `id_admin2`, `waktu_kejadian`, `waktu_laporan`, `deskripsi_umum`, `nama_ket_aset`, `lokasi_aset`, `identitas_pemilik_aset`, `bukti`, `jenis_klasifikasi`, `analisis`, `solusi`, `ticket`, `status`, `terakhir_diupdate`) VALUES
-(1, 2, NULL, NULL, '2019-02-12', '2019-02-27 17:58:28', 'desc', 'nama aset', 'lokasi aset', 'pemilik aset', 'bukti', NULL, NULL, NULL, 'uhi1312312', '1', '2019-02-27 17:58:28');
+(1, 2, NULL, NULL, '2019-02-12', '2019-02-27 17:58:28', 'desc', 'nama aset', 'lokasi aset', 'pemilik aset', 'bukti', NULL, NULL, NULL, 'uhi1312312', '1', '2019-02-27 17:58:28'),
+(3, 3, NULL, NULL, '2019-03-01', '2019-03-07 06:27:02', 'kn', 'jn', 'kmk', 'km', '5a4efa45eae9b-logo-bssn_665_3741.jpg', 'Malware', NULL, NULL, 'UMCTK', '1', '2019-03-07 06:27:02');
 
 -- --------------------------------------------------------
 
@@ -117,7 +120,8 @@ CREATE TABLE `pelapor` (
 
 INSERT INTO `pelapor` (`id_pelapor`, `nama_pelapor`, `no_telp`, `email`, `password`, `no_id`) VALUES
 (2, 'Pelapor 1', '0861384716', 'wildanzhq@gmail.com', '76efb51a6f471449ccf1463e635053fc0bac7625', '18517541511'),
-(3, 'Pelapor 2', '0861384716', 'rizaldi.wahaz@gmail.com', '76efb51a6f471449ccf1463e635053fc0bac7625', '985175415');
+(3, 'Pelapor 2', '0861384716', 'rizaldi.wahaz@gmail.com', '0e3282ddd72fba2c5c302d30d18437c7d6823372', '985175415'),
+(4, 'a', '1', 'a@a.com', '86f7e437faa5a7fce15d1ddcb9eaeaea377667b8', '1');
 
 --
 -- Indexes for dumped tables
@@ -170,12 +174,12 @@ ALTER TABLE `admin_2`
 -- AUTO_INCREMENT for table `aduan_siber`
 --
 ALTER TABLE `aduan_siber`
-  MODIFY `id_aduan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_aduan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `pelapor`
 --
 ALTER TABLE `pelapor`
-  MODIFY `id_pelapor` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_pelapor` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
 --
@@ -187,6 +191,7 @@ ALTER TABLE `aduan_siber`
   ADD CONSTRAINT `aduan_siber_ibfk_1` FOREIGN KEY (`id_pelapor`) REFERENCES `pelapor` (`id_pelapor`),
   ADD CONSTRAINT `aduan_siber_ibfk_2` FOREIGN KEY (`id_admin2`) REFERENCES `admin_2` (`id_admin2`),
   ADD CONSTRAINT `aduan_siber_ibfk_3` FOREIGN KEY (`id_admin1`) REFERENCES `admin_1` (`id_admin1`);
+COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
