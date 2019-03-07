@@ -5,7 +5,7 @@ class M_lapor extends CI_Model {
 	
 	public function login()
 	{
-		$query = $this->db->select('email,password,nama_pelapor,no_telp,no_id')
+		$query = $this->db->select('id_pelapor,email,password,nama_pelapor,no_telp,no_id')
 				 ->where('email', $this->input->post('emailMasuk'))
 				 ->where('password', sha1($this->input->post('passwordMasuk')))
 				 ->get('pelapor');
@@ -13,7 +13,8 @@ class M_lapor extends CI_Model {
 		if ($this->db->affected_rows() > 0) {
 			$data = $query->row();
 
-			$session = array('nama_pelapor' => $data->nama_pelapor,
+			$session = array('id_pelapor'	=> $data->id_pelapor,
+							 'nama_pelapor' => $data->nama_pelapor,
 							 'no_telp' 		=> $data->no_telp,
 							 'email'		=> $data->email,
 							 'password'		=> $data->password,
@@ -23,6 +24,48 @@ class M_lapor extends CI_Model {
 
 			$this->session->set_userdata( $session );
 
+			return true;
+		} else {
+			return false;
+		}
+	}
+
+	public function register()
+	{
+		$data = array('nama_pelapor' => $this->input->post('regNama'),
+					  'no_telp'		 => $this->input->post('regTelp'),
+					  'email'		 => $this->input->post('regEmail'),
+					  'password'	 => sha1($this->input->post('regPass')),
+					  'no_id'		 => $this->input->post('regId')
+					);
+
+		$this->db->insert('pelapor', $data);
+
+		if ($this->db->affected_rows() > 0) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+
+	public function lapor($files)
+	{
+		$ticket = substr(str_shuffle(str_repeat("0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ", 5)), 0, 5);
+
+		$data = array('waktu_kejadian' => $this->input->post('waktu_kejadian'), 
+					  'deskripsi_umum' => $this->input->post('desc_umum'),
+					  'nama_ket_aset'  => $this->input->post('nama_aset'),
+					  'lokasi_aset'	   => $this->input->post('lokasi'),
+					  'identitas_pemilik_aset'	=> $this->input->post('id_pemilik'),
+					  'bukti'		   => $files['file_name'],
+					  'jenis_klasifikasi' => $this->input->post('jenis'),
+					  'ticket'		   => $ticket,
+					  'id_pelapor'	   => $this->session->userdata('id_pelapor')
+					);
+
+		$this->db->insert('aduan_siber', $data);
+
+		if ($this->db->affected_rows() > 0) {
 			return true;
 		} else {
 			return false;

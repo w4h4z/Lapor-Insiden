@@ -6,7 +6,7 @@ class Admin extends CI_Controller {
 	public function __construct()
 	{
 		parent::__construct();
-		
+		$this->load->model('m_admin');
 	}
 
 	public function index()
@@ -42,11 +42,18 @@ class Admin extends CI_Controller {
 	}
 
 	public function auth() {
-		// authentication
+		if ($this->m_admin->login()) {
+			redirect('admin');
+		} else {
+			$this->session->set_flashdata('failed', 'failed');
+			redirect('admin/login');
+		}
 	}
 
 	public function logout() {
-		
+		$this->session->sess_destroy();
+
+		redirect('admin/login');
 	}
 
 }

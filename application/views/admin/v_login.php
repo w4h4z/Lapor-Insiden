@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>AdminLTE 2 | Log in</title>
+  <title>Lapor Insiden | Log in</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.7 -->
@@ -28,12 +28,14 @@
 <body class="hold-transition login-page">
 <div class="login-box">
   <div class="login-logo">
-    <a href="../../index2.html">Lapor <b>Insiden</b></a>
+    <a href="#">Lapor <b>Insiden</b></a>
   </div>
   <!-- /.login-logo -->
   <div class="login-box-body">
     <p class="login-box-msg">Sign in untuk melanjutkan</p>
-
+    <?php if ($this->session->flashdata('failed') != null): ?>
+      <div class="alert alert-danger"><i class="fa fa-times-circle"></i> Login Gagal</div>
+    <?php endif ?>
     <form action="<?php echo base_url(); ?>admin/auth" method="post">
       <div class="form-group has-feedback">
         <input type="text" class="form-control" placeholder="Username" name="username">

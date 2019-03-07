@@ -25,7 +25,8 @@ class Beranda extends CI_Controller {
 		if ($this->m_lapor->login()) {
 			redirect('beranda/lapor');
 		} else {
-			echo 'gagal';
+			$this->session->set_flashdata('failed', 'Login Gagal');
+			redirect('beranda');
 		}
 	}
 
@@ -34,6 +35,40 @@ class Beranda extends CI_Controller {
 		$this->session->sess_destroy();
 
 		redirect('beranda');
+	}
+
+	public function register()
+	{
+		if ($this->m_lapor->register()) {
+			$this->session->set_flashdata('success', 'Pendaftaran Berhasil');
+			redirect('beranda');
+		} else {
+			$this->session->set_flashdata('failed', 'Pendaftaran Gagal');
+			redirect('beranda');
+		}
+	}
+
+	public function insertLapor()
+	{
+		$config['upload_path'] = './uploads/';
+		$config['allowed_types'] = 'gif|jpg|png|txt|doc|docx|pdf|jpeg';
+		$config['max_size']  = '10000';
+		
+		$this->load->library('upload', $config);
+		
+		if ( ! $this->upload->do_upload('bukti')){
+			$this->session->set_flashdata('failed', $this->upload->display_errors());
+			redirect('beranda/lapor');
+		}
+		else{
+			if ($this->m_lapor->lapor($this->upload->data())) {
+				$this->session->set_flashdata('success', "Pelaporan Berhasil");
+				redirect('beranda/lapor');		
+			} else {
+				$this->session->set_flashdata('failed', "Pelaporan Gagal");
+				redirect('beranda/lapor');
+			}
+		}
 	}
 
 }

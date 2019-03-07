@@ -56,6 +56,12 @@
         <h1 class="mx-auto my-0 text-uppercase">Lapor Insiden</h1>
         <h2 class="text-white-50 mx-auto mt-2 mb-5">Laporkan insiden yang anda alami dan akan kami tangani dengan cepat</h2>
         <button class="btn btn-primary" data-toggle="modal" data-target="#login">Lapor Insiden</button>
+        <?php if ($this->session->flashdata('success') != null): ?>
+          <div class="alert alert-success" style="margin-top: 20px"><i class="fa fa-check-circle"></i> <?php echo $this->session->flashdata('success');?></div>
+        <?php endif ?>
+        <?php if ($this->session->flashdata('failed') != null): ?>
+          <div class="alert alert-danger" style="margin-top: 20px"><i class="fa fa-times-circle"></i> <?php echo $this->session->flashdata('failed');?></div>
+        <?php endif ?>
       </div>
     </div>
   </header>
@@ -70,7 +76,7 @@
             <a href="https://bssn.go.id" target="blank">Badan Siber dan Sandi Negara</a> yang digunakan untuk melaporkan kejadian insiden keamanan siber, kerentanan, phising, indikator serangan, malware dan konten negatif.</p>
         </div>
       </div>
-      <img src="<?php base_url(); ?>assets/beranda/images/2.jpeg" class="img-fluid" alt="" style="max-width: 50%">
+      <img src="../assets/beranda/images/2.jpeg" class="img-fluid" alt="" style="max-width: 50%">
     </div>
   </section>
 
@@ -81,7 +87,7 @@
       <!-- Featured Project Row -->
       <div class="row align-items-center no-gutters mb-4 mb-lg-5">
         <div class="col-xl-8 col-lg-7">
-          <img class="img-fluid mb-3 mb-lg-0" src="<?php base_url(); ?>assets/beranda/images/masalah.jpg" alt="" style="width: 100%">
+          <img class="img-fluid mb-3 mb-lg-0" src="../assets/beranda/images/masalah.jpg" alt="" style="width: 100%">
         </div>
         <div class="col-xl-4 col-lg-5">
           <div class="featured-text text-center text-lg-left">
@@ -94,7 +100,7 @@
       <!-- Project One Row -->
       <div class="row justify-content-center no-gutters mb-5 mb-lg-0">
         <div class="col-lg-6">
-          <img class="img-fluid" src="<?php base_url(); ?>assets/beranda/images/analisis.jpg" alt="">
+          <img class="img-fluid" src="../assets/beranda/images/analisis.jpg" alt="">
         </div>
         <div class="col-lg-6">
           <div class="bg-black text-center h-100 project">
@@ -112,7 +118,7 @@
       <!-- Project Two Row -->
       <div class="row justify-content-center no-gutters">
         <div class="col-lg-6">
-          <img class="img-fluid" src="<?php base_url(); ?>assets/beranda/images/solusi2.jpg" alt="">
+          <img class="img-fluid" src="../assets/beranda/images/solusi2.jpg" alt="">
         </div>
         <div class="col-lg-6 order-lg-first">
           <div class="bg-black text-center h-100 project">
@@ -217,40 +223,40 @@
         <div class="tab-content" id="myTabContent">
           <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
             <p>
-              <form>
+              <form method="post" action="<?php echo base_url('beranda/register'); ?>">
                 <div class="form-group row">
                   <label for="inputEmail3" class="col-sm-12 col-form-label">Nama</label>
                   <div class="col-sm-12">
-                    <input type="text" class="form-control" id="inputNama" placeholder="Nama">
+                    <input type="text" class="form-control" name="regNama" id="inputNama" placeholder="Nama">
                   </div>
                 </div>
                 <div class="form-group row">
                   <label for="inputEmail3" class="col-sm-12 col-form-label">No Telepon</label>
                   <div class="col-sm-12">
-                    <input type="text" class="form-control" id="inputTelepon" placeholder="No Telepon">
+                    <input type="text" class="form-control" id="inputTelepon" name="regTelp" placeholder="No Telepon">
                   </div>
                 </div>
                 <div class="form-group row">
                   <label for="inputEmail3" class="col-sm-12 col-form-label">No Identitas(SIM/KTP)</label>
                   <div class="col-sm-12">
-                    <input type="number" class="form-control" id="inputId" placeholder="No Identitas">
+                    <input type="number" class="form-control" id="inputId" name="regId" placeholder="No Identitas">
                   </div>
                 </div>
                 <div class="form-group row">
                   <label for="inputEmail3" class="col-sm-12 col-form-label">Email</label>
                   <div class="col-sm-12">
-                    <input type="email" class="form-control" id="inputEmail" placeholder="Email">
+                    <input type="email" class="form-control" id="inputEmail" name="regEmail" placeholder="Email">
                   </div>
                 </div>
                 <div class="form-group row">
                   <label for="inputPassword3" class="col-sm-12 col-form-label">Password</label>
                   <div class="col-sm-12">
-                    <input type="password" class="form-control" id="inputPassword" placeholder="Password">
+                    <input type="password" class="form-control" id="inputPassword" name="regPass" placeholder="Password">
                   </div>
                 </div>
                 <div class="form-group row">
                   <div class="col-sm-6">
-                    <button type="submit" class="btn btn-danger btn-block">Batal</button>
+                    <button type="reset" class="btn btn-danger btn-block">Batal</button>
                   </div>
                   <div class="col-sm-6">
                     <button type="submit" class="btn btn-info btn-block">Daftar</button>
@@ -302,5 +308,5 @@
   <script src="<?php echo base_url(); ?>assets/beranda/js/grayscale.min.js"></script>
 
 </body>
-
+  
 </html>

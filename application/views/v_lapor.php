@@ -18,7 +18,13 @@
     </div>
     <div class="box-body" style="font-size: 1.0em">
       <div class="col-sm-8">
-        <form class="form-horizontal" id="form-lapor">
+        <?php if ($this->session->flashdata('success') != null): ?>
+          <div class="alert alert-success" style="margin-top: 20px"><i class="fa fa-check-circle"></i> <?php echo $this->session->flashdata('success');?></div>
+        <?php endif ?>
+        <?php if ($this->session->flashdata('failed') != null): ?>
+          <div class="alert alert-danger" style="margin-top: 20px"><i class="fa fa-times-circle"></i> <?php echo $this->session->flashdata('failed');?></div>
+        <?php endif ?>
+        <form class="form-horizontal" id="form-lapor" method="post" action="<?php echo base_url('beranda/insertLapor'); ?>" enctype='multipart/form-data'>
           <div class="form-group">
             <label class="col-sm-4 control-label">Perkiraan Waktu Kejadian</label>
             <div class="col-sm-8">
@@ -28,7 +34,7 @@
           <div class="form-group">
             <label class="col-sm-4 control-label">Deskripsi Umum</label>
             <div class="col-sm-8">
-              <textarea class="form-control" placeholder="Deskripsi Umum" style="height: 150px"></textarea>
+              <textarea class="form-control" placeholder="Deskripsi Umum" name="desc_umum" style="height: 150px"></textarea>
             </div>
           </div>  
           <div class="form-group">
@@ -38,28 +44,34 @@
             </div>
           </div>
           <div class="form-group">
-            <label class="col-sm-4 control-label">Nama Keterangan</label>
+            <label class="col-sm-4 control-label">Nama Aset</label>
             <div class="col-sm-8">
-              <select class="form-control">
+              <input type="text" name="nama_aset" class="form-control" placeholder="Nama Aset">
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-4 control-label">Jenis Klasifikasi</label>
+            <div class="col-sm-8">
+              <select class="form-control" name="jenis">
                 <option value="">Pilih Jenis Aduan Siber</option>
-                <option value="">Account Comoromise (Pembajakan Akun)</option>
-                <option value="">Data Theft (Pencurian Data)</option>
-                <option value="">Exploitaion of Weak Configuration (Eksploitasi pada sistem yang lemah)</option>
-                <option value="">Exploitaion of Weak Network Architecture (Eksploitasi pada arsitektur jaringan yang lemah)</option>
-                <option value="">Patched Software Exploitation (Eksploitasi pada Perangkat Lunak yang telah di Patch)</option>
-                <option value="">Network Penetration (Penetrasi Jaringan)</option>
-                <option value="">Service Disruption (Gangguan Layanan)</option>
-                <option value="">Spoofing or DNS Poisoning (Pengalihan DNS)</option>
-                <option value="">Unauthorized System Access (Akses sistem yang ilegal/tidak sah)</option>
-                <option value="">Unintentional Information System Exposure (Pembukaan Informasi yang tidak disengaja)</option>
-                <option value="">Unpatched Vulnerable Software Exploitation (Eksploitasi Kerentanan Software yang tidak di Patch)</option>
-                <option value="">Website Defacement (Perusakan Tampilan Situs Web)</option>
-                <option value="">Wireless Access Point Exploitation (Eksploitasi pada WAP)</option>
-                <option value="">Kerentanan (Vulnerability Disclosure)</option>
-                <option value="">Phising</option>
-                <option value="">Indikator Serangan</option>
-                <option value="">Malware</option>
-                <option value="">Konten Negatif</option>
+                <option value="Account Comoromise">Account Comoromise (Pembajakan Akun)</option>
+                <option value="Data Theft">Data Theft (Pencurian Data)</option>
+                <option value="Exploitaion of Weak Configuration">Exploitaion of Weak Configuration (Eksploitasi pada sistem yang lemah)</option>
+                <option value="Exploitaion of Weak Network Architecture">Exploitaion of Weak Network Architecture (Eksploitasi pada arsitektur jaringan yang lemah)</option>
+                <option value="Patched Software Exploitation">Patched Software Exploitation (Eksploitasi pada Perangkat Lunak yang telah di Patch)</option>
+                <option value="Network Penetration">Network Penetration (Penetrasi Jaringan)</option>
+                <option value="Service Disruption">Service Disruption (Gangguan Layanan)</option>
+                <option value="Spoofing or DNS Poisoning">Spoofing or DNS Poisoning (Pengalihan DNS)</option>
+                <option value="Unauthorized System Access">Unauthorized System Access (Akses sistem yang ilegal/tidak sah)</option>
+                <option value="Unintentional Information System Exposure">Unintentional Information System Exposure (Pembukaan Informasi yang tidak disengaja)</option>
+                <option value="Unpatched Vulnerable Software Exploitation">Unpatched Vulnerable Software Exploitation (Eksploitasi Kerentanan Software yang tidak di Patch)</option>
+                <option value="Website Defacement">Website Defacement (Perusakan Tampilan Situs Web)</option>
+                <option value="Wireless Access Point Exploitation">Wireless Access Point Exploitation (Eksploitasi pada WAP)</option>
+                <option value="Kerentanan">Kerentanan (Vulnerability Disclosure)</option>
+                <option value="Phising">Phising</option>
+                <option value="Indikator Serangan">Indikator Serangan</option>
+                <option value="Malware">Malware</option>
+                <option value="Konten Negatif">Konten Negatif</option>
               </select>
             </div>
           </div>
@@ -75,8 +87,14 @@
               <input type="text" name="id_pemilik" class="form-control" placeholder="Identitas Pemilik">
             </div>
           </div>
-          <button class="btn btn-success btn-flat btn-block" style="margin-left: auto;margin-right: auto; width: 400px; margin-bottom: 10px" id="btn-submit" >Submit Form</button>
-          <button class="btn btn-warning btn-flat btn-block" style="margin-left: auto;margin-right: auto; width: 400px; margin-bottom: 10px" id="btn-reset" onclick="resetForm()">Reset Form</button> 
+          <div class="form-group">
+            <label class="col-sm-4 control-label">Bukti</label>
+            <div class="col-sm-8">
+              <input type="file" name="bukti" class="form-control">
+            </div>
+          </div>
+          <button class="btn btn-success btn-flat btn-block" style="margin-left: auto;margin-right: auto; width: 400px; margin-bottom: 10px" id="btn-submit" type="submit">Submit Form</button>
+          <button class="btn btn-warning btn-flat btn-block" style="margin-left: auto;margin-right: auto; width: 400px; margin-bottom: 10px" id="btn-reset" type="reset">Reset Form</button> 
         </form>
       </div>
       <div class="col-sm-4">
@@ -105,8 +123,3 @@
 
 <!-- jQuery 3 -->
 <script src="<?php echo base_url(); ?>assets/jquery/dist/jquery.min.js"></script>
-<script type="text/javascript">
-    function resetForm(){
-      $('#form-lapor').trigger("reset");
-    }
-</script>
