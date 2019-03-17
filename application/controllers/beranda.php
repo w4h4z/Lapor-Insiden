@@ -20,6 +20,13 @@ class Beranda extends CI_Controller {
 		$this->load->view('template', $data);
 	}
 
+	public function history()
+	{
+		$data['main_view'] = 'v_history';
+		$data['history'] = $this->m_lapor->getHistory();
+		$this->load->view('template', $data);
+	}
+
 	public function login()
 	{
 		if ($this->m_lapor->login()) {

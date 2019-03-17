@@ -28,10 +28,28 @@
           <!-- /.box-body -->
         </div>
 
+                  <!-- DONUT CHART -->
+          <div class="box box-danger">
+            <div class="box-header with-border">
+              <h3 class="box-title">Data</h3>
+            </div>
+            <div class="box-body chart-responsive">
+              <div class="chart" id="sales-chart" style="height: 300px; position: relative;"></div>
+            </div>
+            <!-- /.box-body -->
+          </div>
+          <!-- /.box -->
+
       </section>
       <!-- /.content -->
     </div>
     <!-- /.content-wrapper -->
+
+
+    <!-- Morris.js charts -->
+    <script src="<?php echo base_url(); ?>assets/raphael/raphael.min.js"></script>
+    <script src="<?php echo base_url(); ?>assets/morris.js/morris.min.js"></script>
+
     <script>
       //--------------
     //- AREA CHART -
@@ -109,4 +127,17 @@
 
     //Create the line chart
     areaChart.Line(areaChartData, areaChartOptions)
+
+        //DONUT CHART
+    var donut = new Morris.Donut({
+      element: 'sales-chart',
+      resize: true,
+      colors: ["#3c8dbc", "#f56954", "#00a65a"],
+      data: [
+        {label: "Download Sales", value: 12},
+        {label: "In-Store Sales", value: 30},
+        {label: "Mail-Order Sales", value: 20}
+      ],
+      hideHover: 'auto'
+    });
 </script>

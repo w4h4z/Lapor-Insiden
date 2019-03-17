@@ -19,6 +19,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <link rel="stylesheet" href="<?php echo base_url(); ?>assets/dist/css/AdminLTE.min.css">
   <!-- DataTables -->
   <link rel="stylesheet" href="<?php echo base_url(); ?>assets/datatables.net-bs/css/dataTables.bootstrap.min.css">
+  <!-- Morris charts -->
+  <link rel="stylesheet" href="<?php echo base_url(); ?>assets/morris.js/morris.css">
 
   <!-- AdminLTE Skins. We have chosen the skin-blue for this starter
         page. However, you can choose any other skin. Make sure you
@@ -166,10 +168,8 @@ desired effect
           <li class="header">MENU</li>
           <!-- Optionally, you can add icons to the links -->
           <li><a href="<?php echo base_url(); ?>admin"><i class="fa fa-link"></i> <span>Dashoard</span></a></li>
-          <li><a href="<?php echo base_url(); ?>admin/klarifikasi"><i class="fa fa-link"></i> <span>Klarifikasi Insiden</span></a></li>
-          <li><a href="<?php echo base_url(); ?>admin/feedback"><i class="fa fa-link"></i> <span>Verifikasi Feedback</span></a></li>
-          <li><a href="<?php echo base_url(); ?>admin/analisis"><i class="fa fa-link"></i> <span>Analisis Insiden</span></a></li>
-          <li><a href="<?php echo base_url(); ?>admin/tembusan"><i class="fa fa-link"></i> <span>Tembusan Insiden</span></a></li>
+          <li><a href="<?php echo base_url(); ?>admin/laporan"><i class="fa fa-link"></i> <span>Laporan</span></a></li>
+          <li><a href="<?php echo base_url(); ?>admin/progress"><i class="fa fa-link"></i> <span>Sedang Ditangani</span></a></li>
           <!-- <li class="treeview">
             <a href="#"><i class="fa fa-link"></i> <span>Multilevel</span>
               <span class="pull-right-container">

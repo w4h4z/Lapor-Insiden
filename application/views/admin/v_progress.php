@@ -3,7 +3,7 @@
       <!-- Content Header (Page header) -->
       <section class="content-header">
         <h1>
-          Aduan
+          Sedang Ditangani
           <!-- <small>Optional description</small> -->
         </h1>
         <ol class="breadcrumb">
@@ -38,10 +38,7 @@
                   <td>'.$data->ticket.'</td>
                   <td>'.$data->waktu_laporan.'</td>
                   <td>'.$data->jenis_klasifikasi.'</td>
-                  <td>
-                  <button class="btn btn-primary btn-flat">Detail</button>
-                  <button class="btn btn-warning btn-flat">Verifikasi</button>
-                  </td>
+                  <td><button class="btn btn-primary btn-flat">Detail</button></td>
                   </tr>
                   ';
                 }

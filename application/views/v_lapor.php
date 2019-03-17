@@ -14,7 +14,7 @@
 
   <div class="box box-warning" id="box-laporan">
     <div class="box-header with-border">
-      <h3 class="box-title">From Laporan Insiden</h3>
+      <h3 class="box-title">Form Laporan Insiden</h3>
     </div>
     <div class="box-body" style="font-size: 1.0em">
       <div class="col-sm-8">
@@ -26,6 +26,33 @@
         <?php endif ?>
         <form class="form-horizontal" id="form-lapor" method="post" action="<?php echo base_url('beranda/insertLapor'); ?>" enctype='multipart/form-data'>
           <div class="form-group">
+            <label class="col-sm-4 control-label">Jenis Klasifikasi</label>
+            <div class="col-sm-8">
+              <select class="form-control" name="jenis" id="jenisAduan">
+                <option value="">Pilih Jenis Aduan Siber</option>
+                <option value="Account Comoromise">Account Comoromise (Pembajakan Akun)</option>
+                <option value="Data Theft">Data Theft (Pencurian Data)</option>
+                <option value="Exploitaion of Weak Configuration">Exploitaion of Weak Configuration (Eksploitasi pada sistem yang lemah)</option>
+                <option value="Exploitaion of Weak Network Architecture">Exploitaion of Weak Network Architecture (Eksploitasi pada arsitektur jaringan yang lemah)</option>
+                <option value="Patched Software Exploitation">Patched Software Exploitation (Eksploitasi pada Perangkat Lunak yang telah di Patch)</option>
+                <option value="Network Penetration">Network Penetration (Penetrasi Jaringan)</option>
+                <option value="Service Disruption">Service Disruption (Gangguan Layanan)</option>
+                <option value="Spoofing or DNS Poisoning">Spoofing or DNS Poisoning (Pengalihan DNS)</option>
+                <option value="Unauthorized System Access">Unauthorized System Access (Akses sistem yang ilegal/tidak sah)</option>
+                <option value="Unintentional Information System Exposure">Unintentional Information System Exposure (Pembukaan Informasi yang tidak disengaja)</option>
+                <option value="Unpatched Vulnerable Software Exploitation">Unpatched Vulnerable Software Exploitation (Eksploitasi Kerentanan Software yang tidak di Patch)</option>
+                <option value="Website Defacement">Website Defacement (Perusakan Tampilan Situs Web)</option>
+                <option value="Wireless Access Point Exploitation">Wireless Access Point Exploitation (Eksploitasi pada WAP)</option>
+                <option value="Kerentanan">Kerentanan (Vulnerability Disclosure)</option>
+                <option value="Phising">Phising</option>
+                <option value="Indikator Serangan">Indikator Serangan</option>
+                <option value="Malware">Malware</option>
+                <option value="Konten Negatif">Konten Negatif</option>
+              </select>
+            </div>
+          </div>
+          <div id="setelahmemilihjenis" style="display: none">
+            <div class="form-group">
             <label class="col-sm-4 control-label">Perkiraan Waktu Kejadian</label>
             <div class="col-sm-8">
               <input type="date" name="waktu_kejadian" class="form-control">
@@ -50,32 +77,6 @@
             </div>
           </div>
           <div class="form-group">
-            <label class="col-sm-4 control-label">Jenis Klasifikasi</label>
-            <div class="col-sm-8">
-              <select class="form-control" name="jenis">
-                <option value="">Pilih Jenis Aduan Siber</option>
-                <option value="Account Comoromise">Account Comoromise (Pembajakan Akun)</option>
-                <option value="Data Theft">Data Theft (Pencurian Data)</option>
-                <option value="Exploitaion of Weak Configuration">Exploitaion of Weak Configuration (Eksploitasi pada sistem yang lemah)</option>
-                <option value="Exploitaion of Weak Network Architecture">Exploitaion of Weak Network Architecture (Eksploitasi pada arsitektur jaringan yang lemah)</option>
-                <option value="Patched Software Exploitation">Patched Software Exploitation (Eksploitasi pada Perangkat Lunak yang telah di Patch)</option>
-                <option value="Network Penetration">Network Penetration (Penetrasi Jaringan)</option>
-                <option value="Service Disruption">Service Disruption (Gangguan Layanan)</option>
-                <option value="Spoofing or DNS Poisoning">Spoofing or DNS Poisoning (Pengalihan DNS)</option>
-                <option value="Unauthorized System Access">Unauthorized System Access (Akses sistem yang ilegal/tidak sah)</option>
-                <option value="Unintentional Information System Exposure">Unintentional Information System Exposure (Pembukaan Informasi yang tidak disengaja)</option>
-                <option value="Unpatched Vulnerable Software Exploitation">Unpatched Vulnerable Software Exploitation (Eksploitasi Kerentanan Software yang tidak di Patch)</option>
-                <option value="Website Defacement">Website Defacement (Perusakan Tampilan Situs Web)</option>
-                <option value="Wireless Access Point Exploitation">Wireless Access Point Exploitation (Eksploitasi pada WAP)</option>
-                <option value="Kerentanan">Kerentanan (Vulnerability Disclosure)</option>
-                <option value="Phising">Phising</option>
-                <option value="Indikator Serangan">Indikator Serangan</option>
-                <option value="Malware">Malware</option>
-                <option value="Konten Negatif">Konten Negatif</option>
-              </select>
-            </div>
-          </div>
-          <div class="form-group">
             <label class="col-sm-4 control-label">Lokasi</label>
             <div class="col-sm-8">
               <input type="text" name="lokasi" class="form-control" placeholder="Lokasi">
@@ -95,6 +96,7 @@
           </div>
           <button class="btn btn-success btn-flat btn-block" style="margin-left: auto;margin-right: auto; width: 400px; margin-bottom: 10px" id="btn-submit" type="submit">Submit Form</button>
           <button class="btn btn-warning btn-flat btn-block" style="margin-left: auto;margin-right: auto; width: 400px; margin-bottom: 10px" id="btn-reset" type="reset">Reset Form</button> 
+          </div>
         </form>
       </div>
       <div class="col-sm-4">
@@ -103,8 +105,8 @@
             <h3 class="box-title">Info</h3>
           </div>
           <div class="box-body">
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris at dignissim odio. Duis sit amet congue mi. Donec hendrerit a velit sit amet vehicula. In tristique est vel nunc mattis iaculis. Quisque et tortor finibus, dictum sapien et, vulputate ipsum. Vivamus aliquet ante scelerisque, ultrices lorem dapibus, dictum felis. Mauris lobortis mi vitae fringilla tempor. Cras in blandit felis. Morbi quis metus ut turpis luctus congue ac sit amet justo. Pellentesque semper, orci quis vestibulum vehicula, sem velit dapibus odio, sed dapibus erat lorem quis dolor. Duis suscipit ornare ornare. Donec eget nibh lacinia, maximus tortor interdum, sollicitudin lectus. Sed sit amet tortor vitae mi dignissim ultrices ac in orci.
+            <p id="infoJenis">
+              
             </p>
           </div>
           <!-- /.box-body -->
@@ -123,3 +125,8 @@
 
 <!-- jQuery 3 -->
 <script src="<?php echo base_url(); ?>assets/jquery/dist/jquery.min.js"></script>
+<script type="text/javascript">
+  $( document ).ready(function() {
+    
+  })
+</script>

@@ -72,6 +72,11 @@ class M_lapor extends CI_Model {
 		}
 	}
 
+	public function getHistory()
+	{
+		return $this->db->select('ticket,waktu_laporan,jenis_klasifikasi')->get('aduan_siber')->result();
+	}
+
 }
 
 /* End of file m_lapor.php */

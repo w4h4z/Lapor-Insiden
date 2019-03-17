@@ -7,6 +7,7 @@ class Admin extends CI_Controller {
 	{
 		parent::__construct();
 		$this->load->model('m_admin');
+		$this->load->model('m_lapor');
 	}
 
 	public function index()
@@ -15,24 +16,17 @@ class Admin extends CI_Controller {
 		$this->load->view('admin/template',$data);
 	}
 
-	public function klarifikasi()
+	public function laporan()
 	{
 		$data['main_view'] = 'admin/v_laporan';
+		$data['laporan'] = $this->m_lapor->getHistory();
 		$this->load->view('admin/template',$data);
 	}
 
-	public function feedback() {
-		$data['main_view'] = 'admin/v_laporan';
-		$this->load->view('admin/template',$data);
-	}
-
-	public function analisis() {
-		$data['main_view'] = 'admin/v_laporan';
-		$this->load->view('admin/template',$data);
-	}
-
-	public function tembusan() {
-		$data['main_view'] = 'admin/v_laporan';
+	public function progress()
+	{
+		$data['main_view'] = 'admin/v_progress';
+		$data['laporan'] = $this->m_lapor->getHistory();
 		$this->load->view('admin/template',$data);
 	}
 
