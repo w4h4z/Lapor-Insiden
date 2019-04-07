@@ -101,7 +101,7 @@
       </div>
       <div class="modal-body">
                         <p>
-                  <form method="post" action="<?php echo base_url('beranda/register'); ?>">
+                  <form method="post" action="<?php echo base_url('beranda/'); ?>">
                     <div class="form-group row">
                       <label for="inputEmail3" class="col-sm-12 col-form-label">Nama</label>
                       <div class="col-sm-12">
@@ -137,7 +137,7 @@
                         <button type="button" data-dismiss="modal" class="btn btn-danger btn-block">Batal</button>
                       </div>
                       <div class="col-sm-6">
-                        <button type="submit" class="btn btn-info btn-block">Daftar</button>
+                        <button type="submit" class="btn btn-info btn-block">Edit</button>
                       </div>
                     </div>
                   </form>

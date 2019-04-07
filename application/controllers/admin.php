@@ -19,14 +19,14 @@ class Admin extends CI_Controller {
 	public function laporan()
 	{
 		$data['main_view'] = 'admin/v_laporan';
-		$data['laporan'] = $this->m_lapor->getHistory();
+		$data['laporan'] = $this->m_lapor->getHistory1();
 		$this->load->view('admin/template',$data);
 	}
 
 	public function progress()
 	{
 		$data['main_view'] = 'admin/v_progress';
-		$data['laporan'] = $this->m_lapor->getHistory();
+		$data['laporan'] = $this->m_lapor->getHistoryVerif();
 		$this->load->view('admin/template',$data);
 	}
 
@@ -48,6 +48,56 @@ class Admin extends CI_Controller {
 		$this->session->sess_destroy();
 
 		redirect('admin/login');
+	}
+
+	public function verif_lapor($id)
+	{
+		if ($this->m_admin->verifLaporan($id)) {
+			redirect('admin/laporan');
+		} else {
+			redirect('admin/laporan');
+		}
+	}
+
+	public function lapor($ticket,$id)
+	{
+		$array = array(
+			'ticket' => $ticket,
+			'id_aduan' => $id
+		);
+		
+		$this->session->set_userdata( $array );
+		$data['main_view'] = 'admin/v_tangani_laporan';
+		$data['aduan'] = $this->m_admin->detailAduan($ticket);
+		$data['chat'] = $this->m_admin->getChat();
+		$this->load->view('admin/template', $data);
+	}
+
+	public function chat()
+	{
+		if ($this->m_admin->chat()) {
+			redirect('admin/lapor/'.$this->session->userdata('ticket').'/'.$this->session->userdata('id_aduan').'');
+		} else {
+			redirect('admin/lapor/'.$this->session->userdata('ticket').'/'.$this->session->userdata('id_aduan').'');
+		}
+	}
+
+	public function tampilChat($id)
+	{
+		if ($this->m_admin->tampilChat($id)) {
+			redirect('admin/lapor/'.$this->session->userdata('ticket').'/'.$this->session->userdata('id_aduan').'');
+		} else {
+			redirect('admin/lapor/'.$this->session->userdata('ticket').'/'.$this->session->userdata('id_aduan').'');
+		}
+	}
+
+	public function deleteChat($id)
+	{
+		if ($this->m_admin->deleteChat($id)) {
+			redirect('admin/lapor/'.$this->session->userdata('ticket').'/'.$this->session->userdata('id_aduan').'');
+		} else {
+			redirect('admin/lapor/'.$this->session->userdata('ticket').'/'.$this->session->userdata('id_aduan').'');
+		}
 	}
 
 }

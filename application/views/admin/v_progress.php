@@ -38,7 +38,7 @@
                   <td>'.$data->ticket.'</td>
                   <td>'.$data->waktu_laporan.'</td>
                   <td>'.$data->jenis_klasifikasi.'</td>
-                  <td><button class="btn btn-primary btn-flat">Detail</button></td>
+                  <td><a href="'.base_url('index.php/admin/lapor/').''.$data->ticket.'/'.$data->id_aduan.'" class="btn btn-primary btn-flat">Detail</a></td>
                   </tr>
                   ';
                 }

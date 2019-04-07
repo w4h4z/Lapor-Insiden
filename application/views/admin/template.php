@@ -105,7 +105,7 @@ desired effect
                 <!-- The user image in the navbar-->
                 <img src="<?php echo base_url(); ?>assets/dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
                 <!-- hidden-xs hides the username on small devices so only the image appears. -->
-                <span class="hidden-xs">Alexander Pierce</span>
+                <span class="hidden-xs"><?php echo $this->session->userdata('nama_admin'); ?></span>
               </a>
               <ul class="dropdown-menu">
                 <!-- The user image in the menu -->
@@ -145,9 +145,9 @@ desired effect
             <img src="<?php echo base_url(); ?>assets/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
           </div>
           <div class="pull-left info">
-            <p>Alexander Pierce</p>
+            <p><?php echo $this->session->userdata('nama_admin'); ?></p>
             <!-- Status -->
-            <a href="#">D1</a>
+            <a href="#"><?php echo $this->session->userdata('tipe'); ?></a>
           </div>
         </div>
 
@@ -168,7 +168,9 @@ desired effect
           <li class="header">MENU</li>
           <!-- Optionally, you can add icons to the links -->
           <li><a href="<?php echo base_url(); ?>admin"><i class="fa fa-link"></i> <span>Dashoard</span></a></li>
-          <li><a href="<?php echo base_url(); ?>admin/laporan"><i class="fa fa-link"></i> <span>Laporan</span></a></li>
+          <?php if ($this->session->userdata('admin') == 1): ?>
+            <li><a href="<?php echo base_url(); ?>admin/laporan"><i class="fa fa-link"></i> <span>Laporan</span></a></li>
+          <?php endif ?>
           <li><a href="<?php echo base_url(); ?>admin/progress"><i class="fa fa-link"></i> <span>Sedang Ditangani</span></a></li>
           <!-- <li class="treeview">
             <a href="#"><i class="fa fa-link"></i> <span>Multilevel</span>

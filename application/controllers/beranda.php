@@ -7,6 +7,7 @@ class Beranda extends CI_Controller {
 	{
 		parent::__construct();
 		$this->load->model('m_lapor');
+		$this->load->model('m_admin');
 	}
 
 	public function index()
@@ -76,6 +77,14 @@ class Beranda extends CI_Controller {
 				redirect('beranda/lapor');
 			}
 		}
+	}
+
+	public function detail($ticket,$id)
+	{
+		$data['main_view'] = 'v_detail';
+		$data['aduan'] = $this->m_admin->detailAduan($ticket);
+		$data['chat'] = $this->m_admin->getChat();
+		$this->load->view('template', $data);
 	}
 
 }
