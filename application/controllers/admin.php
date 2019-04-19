@@ -12,27 +12,74 @@ class Admin extends CI_Controller {
 
 	public function index()
 	{
-		$data['main_view'] = 'admin/v_chart';
-		$this->load->view('admin/template',$data);
+		if ($this->session->userdata('login') == true) {
+			if ($this->session->userdata('klasifikasi') == 'admin') {
+				redirect('admin/chart');	
+			} else {
+				redirect('beranda/lapor');
+			}
+		} else {
+			redirect('admin/login');
+		}
+	}
+
+	public function chart()
+	{
+		if ($this->session->userdata('login') == true) {
+			if ($this->session->userdata('klasifikasi') == 'admin') {
+				$data['main_view'] = 'admin/v_chart';
+				$this->load->view('admin/_template',$data);
+				$this->output->enable_profiler(TRUE);	
+			} else {
+				redirect('beranda/lapor');
+			}
+		} else {
+			redirect('admin/login');
+		}
 	}
 
 	public function laporan()
 	{
-		$data['main_view'] = 'admin/v_laporan';
-		$data['laporan'] = $this->m_lapor->getHistory1();
-		$this->load->view('admin/template',$data);
+		if ($this->session->userdata('login') == true) {
+			if ($this->session->userdata('klasifikasi') == 'admin') {
+				$data['main_view'] = 'admin/v_laporan';
+				$data['laporan'] = $this->m_lapor->getHistory1();
+				$this->load->view('admin/template',$data);	
+			} else {
+				redirect('beranda/lapor');
+			}
+		} else {
+			redirect('admin/login');
+		}
+
 	}
 
 	public function progress()
 	{
-		$data['main_view'] = 'admin/v_progress';
-		$data['laporan'] = $this->m_lapor->getHistoryVerif();
-		$this->load->view('admin/template',$data);
+		if ($this->session->userdata('login') == true) {
+			if ($this->session->userdata('klasifikasi') == 'admin') {
+				$data['main_view'] = 'admin/v_progress';
+				$data['laporan'] = $this->m_lapor->getHistoryVerif();
+				$this->load->view('admin/template',$data);	
+			} else {
+				redirect('beranda/lapor');
+			}
+		} else {
+			redirect('admin/login');
+		}
 	}
 
 	public function login()
 	{
-		$this->load->view('admin/v_login');
+		if ($this->session->userdata('login') == true) {
+			if ($this->session->userdata('klasifikasi') == 'admin') {
+				redirect('admin');
+			} else {
+				redirect('beranda/lapor');
+			}
+		} else {
+			$this->load->view('admin/v_login');	
+		}
 	}
 
 	public function auth() {
@@ -66,11 +113,21 @@ class Admin extends CI_Controller {
 			'id_aduan' => $id
 		);
 		
-		$this->session->set_userdata( $array );
-		$data['main_view'] = 'admin/v_tangani_laporan';
-		$data['aduan'] = $this->m_admin->detailAduan($ticket);
-		$data['chat'] = $this->m_admin->getChat();
-		$this->load->view('admin/template', $data);
+		if ($this->session->userdata('login') == true) {
+			if ($this->session->userdata('klasifikasi') == 'admin') {
+				$this->session->set_userdata( $array );
+				$data['main_view'] = 'admin/v_tangani_laporan';
+				$data['aduan'] = $this->m_admin->detailAduan($ticket);
+				$data['chat'] = $this->m_admin->getChat();
+				$this->load->view('admin/template', $data);	
+
+				$this->output->enable_profiler(TRUE);
+			} else {
+				redirect('beranda/lapor');
+			}
+		} else {
+			redirect('admin/login');
+		}
 	}
 
 	public function chat()

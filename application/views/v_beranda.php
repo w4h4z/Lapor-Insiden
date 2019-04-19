@@ -76,7 +76,7 @@
             <a href="https://bssn.go.id" target="blank">Badan Siber dan Sandi Negara</a> yang digunakan untuk melaporkan kejadian insiden keamanan siber, kerentanan, phising, indikator serangan, malware dan konten negatif.</p>
           </div>
         </div>
-        <img src="../assets/beranda/images/2.jpeg" class="img-fluid" alt="" style="max-width: 50%">
+        <img src="<?php echo base_url(); ?>/assets/beranda/images/2.jpeg" class="img-fluid" alt="" style="max-width: 50%">
       </div>
     </section>
 
@@ -87,7 +87,7 @@
         <!-- Featured Project Row -->
         <div class="row align-items-center no-gutters mb-4 mb-lg-5">
           <div class="col-xl-8 col-lg-7">
-            <img class="img-fluid mb-3 mb-lg-0" src="../assets/beranda/images/masalah.jpg" alt="" style="width: 100%">
+            <img class="img-fluid mb-3 mb-lg-0" src="<?php echo base_url(); ?>/assets/beranda/images/masalah.jpg" alt="" style="width: 100%">
           </div>
           <div class="col-xl-4 col-lg-5">
             <div class="featured-text text-center text-lg-left">
@@ -100,7 +100,7 @@
         <!-- Project One Row -->
         <div class="row justify-content-center no-gutters mb-5 mb-lg-0">
           <div class="col-lg-6">
-            <img class="img-fluid" src="../assets/beranda/images/analisis.jpg" alt="">
+            <img class="img-fluid" src="<?php echo base_url(); ?>/assets/beranda/images/analisis.jpg" alt="">
           </div>
           <div class="col-lg-6">
             <div class="bg-black text-center h-100 project">
@@ -118,7 +118,7 @@
         <!-- Project Two Row -->
         <div class="row justify-content-center no-gutters">
           <div class="col-lg-6">
-            <img class="img-fluid" src="../assets/beranda/images/solusi2.jpg" alt="">
+            <img class="img-fluid" src="<?php echo base_url(); ?>/assets/beranda/images/solusi2.jpg" alt="">
           </div>
           <div class="col-lg-6 order-lg-first">
             <div class="bg-black text-center h-100 project">
@@ -271,7 +271,7 @@
                     <div class="form-group row">
                       <label class="col-sm-12 col-form-label">Alamat Organisasi</label>
                       <div class="col-sm-12">
-                        <textarea class="form-control" name="alamatOrganisasi" id="alamatOrganisasi" placeholder="Alamat Organisasi"></textarea>
+                        <textarea class="form-control" name="alamatOrg" id="alamatOrg" placeholder="Alamat Organisasi"></textarea>
                       </div>
                     </div>
                     </div>

@@ -19,7 +19,8 @@ class M_lapor extends CI_Model {
 							 'email'		=> $data->email,
 							 'password'		=> $data->password,
 							 'no_id'		=> $data->no_id,
-							 'login'		=> true
+							 'login'		=> true,
+							 'klasifikasi'	=> 'user'
 						);
 
 			$this->session->set_userdata( $session );
@@ -36,7 +37,9 @@ class M_lapor extends CI_Model {
 					  'no_telp'		 => $this->input->post('regTelp'),
 					  'email'		 => $this->input->post('regEmail'),
 					  'password'	 => sha1($this->input->post('regPass')),
-					  'no_id'		 => $this->input->post('regId')
+					  'no_id'		 => $this->input->post('regId'),
+					  'nama_org'	 => $this->input->post('namaOrg'),
+					  'alamat_org'	 => $this->input->post('alamatOrg')
 					);
 
 		$this->db->insert('pelapor', $data);
@@ -74,7 +77,7 @@ class M_lapor extends CI_Model {
 
 	public function getHistory()
 	{
-		return $this->db->select('id_aduan,ticket,waktu_laporan,jenis_klasifikasi')->where('id_pelapor',$this->session->userdata('id_pelapor'))->get('aduan_siber')->result();
+		return $this->db->select('id_aduan,ticket,waktu_laporan,jenis_klasifikasi,status_verif')->where('id_pelapor',$this->session->userdata('id_pelapor'))->get('aduan_siber')->result();
 	}
 
 	public function getHistory1()

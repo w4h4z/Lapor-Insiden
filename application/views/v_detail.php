@@ -32,6 +32,7 @@
           <!-- /.direct-chat-img -->
           <div class="direct-chat-text">
             <p><?php echo $aduan->deskripsi_umum; ?></p>
+            <a href="<?php echo base_url(); ?>uploads/<?php echo $aduan->bukti; ?>" class="btn btn-primary btn-md" target="blank">Download Bukti</a>
           </div>
           <!-- /.direct-chat-text -->
         </div>

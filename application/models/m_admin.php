@@ -18,7 +18,9 @@ class M_admin extends CI_Model {
 				'nama_admin' 	  => $a->nama_admin1,
 				'username_admin' => $a->username_admin1,
 				'password_admin' => $a->password_admin1,
-				'admin'			  => '1'
+				'admin'			  => '1',
+				'login'		 	 => true,
+				'klasifikasi'	 => 'admin'
 			);
 			
 			$this->session->set_userdata( $array );
@@ -39,7 +41,9 @@ class M_admin extends CI_Model {
 					'username_admin' => $a->username_admin2,
 					'password_admin' => $a->password_admin2,
 					'admin'			  => '2',
-					'tipe'			  => $a->tipe
+					'tipe'			  => $a->tipe,
+					'login'		 	 => true,
+					'klasifikasi'	 => 'admin'
 				);
 
 				$this->session->set_userdata( $array );
@@ -100,7 +104,11 @@ class M_admin extends CI_Model {
 
 	public function getChat()
 	{
-		return $this->db->where('id_aduan', $this->uri->segment(4))->get('chat')->result();
+		return $this->db->join('admin_2','admin_2.id_admin2=chat.id_admin2')
+						//->join('admin_1','admin_1.id_admin1=chat.id_admin1')
+						->where('id_aduan', $this->uri->segment(4))
+						->get('chat')
+						->result();
 	}
 
 	public function tampilChat($id)

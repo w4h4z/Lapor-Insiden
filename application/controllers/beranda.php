@@ -12,7 +12,15 @@ class Beranda extends CI_Controller {
 
 	public function index()
 	{
-		$this->load->view('v_beranda');
+		if ($this->session->userdata('login') == true) {
+			if ($this->session->userdata('klasifikasi') == 'admin') {
+				redirect('admin');
+			} else {
+				redirect('beranda/lapor');
+			}
+		} else {
+			$this->load->view('v_beranda');
+		}
 	}
 
 	public function lapor()
@@ -48,7 +56,7 @@ class Beranda extends CI_Controller {
 	public function register()
 	{
 		if ($this->m_lapor->register()) {
-			$this->session->set_flashdata('success', 'Pendaftaran Berhasil');
+			$this->session->set_flashdata('success', '<b>Pendaftaran Berhasil</b> Silahkan Cek Alamat Email Anda.');
 			redirect('beranda');
 		} else {
 			$this->session->set_flashdata('failed', 'Pendaftaran Gagal');

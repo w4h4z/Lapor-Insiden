@@ -16,10 +16,7 @@
       <section class="content container-fluid">
 
         <div class="box box-solid">
-          <!-- <div class="box-header with-border">
-            <h3 class="box-title">Aduan</h3>
-          </div> -->
-          <!-- /.box-header -->
+
           <div class="box-body">
             <table id="example1" class="table table-bordered table-striped table-hover">
               <thead>

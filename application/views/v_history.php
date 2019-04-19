@@ -24,17 +24,25 @@
             <th>Waktu Laporan</th>
             <th>Jenis Laporan</th>
             <th>Action</th>
+            <th>Status</th>
           </tr>
         </thead>
         <tbody>
           <?php
+            $status = 'Belum Di Verifikasi';
+            $btn = 'btn-warning';
             foreach ($history as $data) {
+              if ($data->status_verif == 1) {
+                $status = 'Terverifikasi';
+                $btn = 'btn-success';
+              } 
               echo '
               <tr>
                 <td>'.$data->ticket.'</td>
                 <td>'.$data->waktu_laporan.'</td>
                 <td>'.$data->jenis_klasifikasi.'</td>
-                <td><a href="'.base_url('index.php/beranda/detail/').''.$data->ticket.'/'.$data->id_aduan.'" class="btn btn-primary btn-flat">Detail</a></td>
+                <td><a href="'.base_url('index.php/beranda/detail/').''.$data->ticket.'/'.$data->id_aduan.'" class="btn btn-primary">Diskusi</a></td>
+                <td><a href="#" style="cursor: default" class="btn '.$btn.' btn-flat btn-md">'.$status.'</a></td>
               </tr>
               ';
             }

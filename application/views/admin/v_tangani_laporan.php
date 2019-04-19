@@ -35,6 +35,7 @@
           <!-- /.direct-chat-img -->
           <div class="direct-chat-text">
             <p><?php echo $aduan->deskripsi_umum; ?></p>
+            <a href="<?php echo base_url(); ?>uploads/<?php echo $aduan->bukti; ?>" class="btn btn-primary btn-md" target="blank">Download Bukti</a>
           </div>
           <!-- /.direct-chat-text -->
         </div>
@@ -43,7 +44,7 @@
         <?php foreach ($chat as $data): ?>
           <div class="direct-chat-msg right">
             <div class="direct-chat-info clearfix">
-              <span class="direct-chat-name pull-right">BSSN</span>
+              <span class="direct-chat-name pull-right"><?php echo $data->tipe;?></span>
               <span class="direct-chat-timestamp pull-left"><?php echo $data->datetime; ?></span>
             </div>
             <img class="direct-chat-img" src="<?php echo base_url(); ?>assets/dist/img/user2-160x160.jpg" alt="message user image">
@@ -51,7 +52,7 @@
               <?php echo $data->chat; ?>
 
               <?php if($data->status == 0){
-                echo '<br><p style="color: black"><b>Menuggu di setujui</b></p>';
+                echo '<br><p style="color: black"><b>Menunggu di setujui</b></p>';
               }?>
 
               <?php if ($this->session->userdata('admin') == 1 && $data->status == 0): ?>
