@@ -25,6 +25,7 @@
                   <th>Waktu Laporan</th>
                   <th>Jenis Laporan</th>
                   <th>Action</th>
+                  <th>Status</th>
                 </tr>
               </thead>
               <tbody>
@@ -35,7 +36,46 @@
                   <td>'.$data->ticket.'</td>
                   <td>'.$data->waktu_laporan.'</td>
                   <td>'.$data->jenis_klasifikasi.'</td>
-                  <td><a href="'.base_url('index.php/admin/lapor/').''.$data->ticket.'/'.$data->id_aduan.'" class="btn btn-primary btn-flat">Detail</a></td>
+                  <td><a href="'.base_url('index.php/admin/lapor/').''.$data->ticket.'/'.$data->id_aduan.'" class="btn btn-primary">Diskusi</a></td>
+                  <td>';
+                  if ($data->status == 1) {
+                    echo '
+                    <select class="form-control" onchange="updateStatus('.$data->id_aduan.',this.value)">
+                      <option value="1">Open</option>
+                      <option value="2">Close Successful</option>
+                      <option value="3">Close Unsuccessful</option>
+                      <option value="4">Pending</option>
+                    </select>
+                    ';
+                  } elseif ($data->status == 2) {
+                    echo '
+                    <select class="form-control" onchange="updateStatus('.$data->id_aduan.',this.value)">
+                      <option value="2">Close Successful</option>
+                      <option value="1">Open</option>                      
+                      <option value="3">Close Unsuccessful</option>
+                      <option value="4">Pending</option>
+                    </select>
+                    ';
+                  } elseif($data->status == 3) {
+                    echo '
+                    <select class="form-control" onchange="updateStatus('.$data->id_aduan.',this.value)">
+                      <option value="3">Close Unsuccessful</option>
+                      <option value="1">Open</option>
+                      <option value="2">Close Successful</option>                      
+                      <option value="4">Pending</option>
+                    </select>
+                    ';
+                  } elseif($data->status == 4){
+                    echo '
+                    <select class="form-control" onchange="updateStatus('.$data->id_aduan.',this.value)">
+                      <option value="4">Pending</option>
+                      <option value="1">Open</option>
+                      <option value="2">Close Successful</option>
+                      <option value="3">Close Unsuccessful</option>
+                    </select>
+                    ';
+                  }
+                  echo '</td>
                   </tr>
                   ';
                 }
@@ -51,13 +91,16 @@
     </div>
     <!-- /.content-wrapper -->
 
-    <script>
-        $('#example1').DataTable({
-          'paging'      : true,
-          'lengthChange': true,
-          'searching'   : true,
-          'ordering'    : true,
-          'info'        : true,
-          'autoWidth'   : true
+    <script type="text/javascript">
+      function updateStatus(id,a) {
+        $.ajax({
+          url: '<?php echo base_url(); ?>admin/updateStatusAduan/'+id+'/'+a,
+          type: 'POST',
+          dataType: 'json',
+          data: '',
+          success: function(r){
+
+          }
         })
+      }
     </script>

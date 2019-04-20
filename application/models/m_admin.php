@@ -104,8 +104,9 @@ class M_admin extends CI_Model {
 
 	public function getChat()
 	{
-		return $this->db->join('admin_2','admin_2.id_admin2=chat.id_admin2')
-						//->join('admin_1','admin_1.id_admin1=chat.id_admin1')
+		return $this->db->join('pelapor','pelapor.id_pelapor=chat.pelapor', 'left')
+						->join('admin_1','admin_1.id_admin1=chat.id_admin1', 'left')
+						->join('admin_2','admin_2.id_admin2=chat.id_admin2', 'left')
 						->where('id_aduan', $this->uri->segment(4))
 						->get('chat')
 						->result();
@@ -127,6 +128,18 @@ class M_admin extends CI_Model {
 	public function deleteChat($id)
 	{
 		$this->db->where('id', $id)->delete('chat');
+
+		if ($this->db->affected_rows() > 0) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+
+	public function updateStatusAduan($id, $a)
+	{
+		$object = array('status' => $a);
+		$this->db->where('id_aduan', $id)->update('aduan_siber', $object);
 
 		if ($this->db->affected_rows() > 0) {
 			return true;

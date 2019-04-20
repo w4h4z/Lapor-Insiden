@@ -1,6 +1,12 @@
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
 
+<section class="content-header">
+  <h1>
+    <a href="<?php echo base_url(); ?>admin/progress" class="btn btn-primary btn-md"><i class="glyphicon glyphicon-chevron-left"></i> Kembali</a>
+  </h1>
+</section>
+
   <!-- Main content -->
   <section class="content container-fluid">
 
@@ -30,9 +36,32 @@
         <!-- /.direct-chat-msg -->
 
         <?php foreach ($chat as $data): ?>
-          <div class="direct-chat-msg right">
+          <?php if ($data->id_pelapor != null): ?>
+              <div class="direct-chat-msg">
+                <div class="direct-chat-info clearfix">
+                  <span class="direct-chat-name pull-left"><?php echo $aduan->nama_pelapor; ?></span>
+                  <span class="direct-chat-timestamp pull-right"><?php echo $data->datetime; ?></span>
+                </div>
+                <!-- /.direct-chat-info -->
+                <img class="direct-chat-img" src="<?php echo base_url(); ?>assets/dist/img/user2-160x160.jpg" alt="message user image">
+                <!-- /.direct-chat-img -->
+                <div class="direct-chat-text">
+                  <p><?php echo $data->chat; ?></p>
+                </div>
+                <!-- /.direct-chat-text -->
+              </div>
+              <!-- /.direct-chat-msg -->
+          <?php endif ?>
+          <?php if ($data->id_pelapor == null): ?>
+            <div class="direct-chat-msg right">
             <div class="direct-chat-info clearfix">
-              <span class="direct-chat-name pull-right"><?php echo $data->tipe;?></span>
+              <span class="direct-chat-name pull-right">
+              <?php if ($data->tipe != null): ?>
+                <?php echo $data->tipe;?>
+                <?php else: ?>
+                  Pusopkamsinas
+              <?php endif ?>                
+              </span>
               <span class="direct-chat-timestamp pull-left"><?php echo $data->datetime; ?></span>
             </div>
             <img class="direct-chat-img" src="<?php echo base_url(); ?>assets/dist/img/user2-160x160.jpg" alt="message user image">
@@ -50,6 +79,8 @@
 
             </div>
           </div>
+          <?php endif ?>
+          
         <?php endforeach ?>
 
       </div>

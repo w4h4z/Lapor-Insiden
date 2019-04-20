@@ -107,6 +107,17 @@ class Admin extends CI_Controller {
 		}
 	}
 
+	public function updateStatusAduan($id, $z)
+	{
+		$a = array('r' => true);
+		if ($this->m_admin->updateStatusAduan($id, $z)) {
+			echo json_encode($a);
+		} else {
+			$a['r'] = 'false';
+			echo json_encode($a);
+		}
+	}
+
 	public function lapor($ticket,$id)
 	{
 		$array = array(
