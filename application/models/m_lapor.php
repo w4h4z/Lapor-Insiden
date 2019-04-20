@@ -90,11 +90,40 @@ class M_lapor extends CI_Model {
 		return $this->db->select('id_aduan,ticket,waktu_laporan,jenis_klasifikasi')->where('status_verif', 1)->get('aduan_siber')->result();
 	}
 
-	/*public function sendChat()
+	public function getChat()
 	{
-		$object = array('' => , );
+		return $this->db->join('pelapor','pelapor.id_pelapor=chat.pelapor', 'left')
+						->join('admin_1','admin_1.id_admin1=chat.id_admin1', 'left')
+						->join('admin_2','admin_2.id_admin2=chat.id_admin2', 'left')
+						->where('id_aduan', $this->uri->segment(4))
+						->get('chat')
+						->result();
+	}
+
+
+	public function sendChat()
+	{
+		$status = 1;
+		$admin1 = '';
+		$admin2 = '';
+
+		$object = array(
+			'id_aduan' => $this->session->userdata('id_aduan'),
+			'id_admin1' => $admin1,
+			'id_admin2' => $admin2,
+			'chat' 	   => $this->input->post('chat'),
+			'status'   => $status,
+			'pelapor'	=>  $this->session->userdata('id_pelapor')
+		);
+
 		$this->db->insert('chat', $object);
-	}*/
+
+		if ($this->db->affected_rows() > 0) {
+			return true;
+		} else {
+			return false;
+		}
+	}
 
 }
 

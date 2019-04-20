@@ -8,6 +8,7 @@ class Beranda extends CI_Controller {
 		parent::__construct();
 		$this->load->model('m_lapor');
 		$this->load->model('m_admin');
+		$this->output->enable_profiler(TRUE);
 	}
 
 	public function index()
@@ -53,6 +54,15 @@ class Beranda extends CI_Controller {
 		redirect('beranda');
 	}
 
+	public function chat()
+	{
+		if ($this->m_lapor->sendChat()) {
+			redirect($this->session->userdata('url'));
+		} else {
+			redirect($this->session->userdata('url'));
+		}
+	}
+
 	public function register()
 	{
 		if ($this->m_lapor->register()) {
@@ -91,7 +101,13 @@ class Beranda extends CI_Controller {
 	{
 		$data['main_view'] = 'v_detail';
 		$data['aduan'] = $this->m_admin->detailAduan($ticket);
-		$data['chat'] = $this->m_admin->getChat();
+		$data['chat'] = $this->m_lapor->getChat();
+		$array = array(
+			'url' => base_url().uri_string(),
+			'id_aduan' => $id
+		);
+		
+		$this->session->set_userdata( $array );
 		$this->load->view('template', $data);
 	}
 

@@ -8,6 +8,7 @@ class Admin extends CI_Controller {
 		parent::__construct();
 		$this->load->model('m_admin');
 		$this->load->model('m_lapor');
+		$this->output->enable_profiler(TRUE);
 	}
 
 	public function index()
@@ -28,7 +29,7 @@ class Admin extends CI_Controller {
 		if ($this->session->userdata('login') == true) {
 			if ($this->session->userdata('klasifikasi') == 'admin') {
 				$data['main_view'] = 'admin/v_chart';
-				$this->load->view('admin/_template',$data);
+				$this->load->view('admin/template',$data);
 				$this->output->enable_profiler(TRUE);	
 			} else {
 				redirect('beranda/lapor');

@@ -77,7 +77,7 @@ class M_admin extends CI_Model {
 	{
 		$status = 0;
 		$admin1 = '';
-		$admin2 = $this->session->userdata('id_admin');;
+		$admin2 = $this->session->userdata('id_admin');
 
 		if ($this->session->userdata('admin') == 1) {
 			$status = 1;

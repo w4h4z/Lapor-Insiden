@@ -40,26 +40,44 @@
 
         <?php foreach ($chat as $data): ?>
           <?php if ($data->status == 1): ?>
-            <div class="direct-chat-msg right">
-            <div class="direct-chat-info clearfix">
-              <span class="direct-chat-name pull-right">BSSN</span>
-              <span class="direct-chat-timestamp pull-left"><?php echo $data->datetime; ?></span>
-            </div>
-            <img class="direct-chat-img" src="<?php echo base_url(); ?>assets/dist/img/user2-160x160.jpg" alt="message user image">
-            <div class="direct-chat-text">
-              <?php echo $data->chat; ?>
+            <?php if ($data->id_pelapor != null): ?>
+              <div class="direct-chat-msg">
+                <div class="direct-chat-info clearfix">
+                  <span class="direct-chat-name pull-left"><?php echo $aduan->nama_pelapor; ?></span>
+                  <span class="direct-chat-timestamp pull-right"><?php echo $data->datetime; ?></span>
+                </div>
+                <!-- /.direct-chat-info -->
+                <img class="direct-chat-img" src="<?php echo base_url(); ?>assets/dist/img/user2-160x160.jpg" alt="message user image">
+                <!-- /.direct-chat-img -->
+                <div class="direct-chat-text">
+                  <p><?php echo $data->chat; ?></p>
+                </div>
+                <!-- /.direct-chat-text -->
+              </div>
+              <!-- /.direct-chat-msg -->
+            <?php endif ?>
+            <?php if ($data->id_pelapor == null): ?>
+              <div class="direct-chat-msg right">
+                <div class="direct-chat-info clearfix">
+                  <span class="direct-chat-name pull-right">BSSN</span>
+                  <span class="direct-chat-timestamp pull-left"><?php echo $data->datetime; ?></span>
+                </div>
+                <img class="direct-chat-img" src="<?php echo base_url(); ?>assets/dist/img/user2-160x160.jpg" alt="message user image">
+                <div class="direct-chat-text">
+                  <?php echo $data->chat; ?>
 
-              <?php if($data->status == 0){
-                echo '<br><p style="color: black"><b>Menuggu di setujui</b></p>';
-              }?>
+                  <?php if($data->status == 0){
+                    echo '<br><p style="color: black"><b>Menuggu di setujui</b></p>';
+                  }?>
 
-              <?php if ($this->session->userdata('admin') == 1 && $data->status == 0): ?>
-                <a href="<?php echo base_url('index.php/admin/tampilChat/'); ?><?php echo $data->id; ?>" class="btn btn-success btn-sm">Tampilkan</a>
-                <a href="<?php echo base_url('index.php/admin/deleteChat/'); ?><?php echo $data->id; ?>" class="btn btn-danger btn-sm">Hapus</a>  
-              <?php endif ?>
+                  <?php if ($this->session->userdata('admin') == 1 && $data->status == 0): ?>
+                    <a href="<?php echo base_url('index.php/admin/tampilChat/'); ?><?php echo $data->id; ?>" class="btn btn-success btn-sm">Tampilkan</a>
+                    <a href="<?php echo base_url('index.php/admin/deleteChat/'); ?><?php echo $data->id; ?>" class="btn btn-danger btn-sm">Hapus</a>  
+                  <?php endif ?>
 
-            </div>
-          </div>
+                </div>
+              </div>
+            <?php endif ?>
           <?php endif ?>
 
         <?php endforeach ?>
@@ -69,7 +87,7 @@
     </div>
     <!-- /.box-body -->
     <div class="box-footer">
-      <form action="<?php echo base_url('index.php/'); ?>" method="post">
+      <form action="<?php echo base_url('index.php/beranda/chat'); ?>" method="post">
         <div class="input-group">
           <input type="text" name="chat" placeholder="Type Message ..." class="form-control" required>
           <span class="input-group-btn">

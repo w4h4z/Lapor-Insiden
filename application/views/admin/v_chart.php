@@ -1,26 +1,23 @@
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
-      <!-- Content Header (Page header) -->
-      <section class="content-header">
-        <h1>
-          Dashoard
-          <!-- <small>Optional description</small> -->
-        </h1>
-        <ol class="breadcrumb">
-          <li><a href="#"><i class="fa fa-dashboard"></i> Level</a></li>
-          <li class="active">Here</li>
-        </ol>
-      </section>
 
       <!-- Main content -->
       <section class="content container-fluid">
 
         <div class="box box-solid">
-          <div class="box-header with-border">
-            <h3 class="box-title">Jumlah Aduan</h3>
-          </div>
-          <!-- /.box-header -->
           <div class="box-body">
+
+            <ul class="nav nav-pills nav-justified" style="margin-bottom: 10px">
+              <li class="active"><a href="<?php echo base_url(); ?>admin">Dashboard</a></li>
+              <?php if ($this->session->userdata('admin') == 1): ?>
+                <li><a href="<?php echo base_url(); ?>admin/laporan">Laporan</a></li>
+              <?php endif ?>
+              <li><a href="<?php echo base_url(); ?>admin/progress">Sedang Ditangani</a></li>
+              <?php if ($this->session->userdata('admin') == 1): ?>
+                <li><a href="#">Pelapor</a></li>
+              <?php endif ?>
+            </ul>
+            
             <div class="chart">
               <canvas id="areaChart" style="height:250px"></canvas>
             </div>
