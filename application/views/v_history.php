@@ -41,8 +41,14 @@
                 <td>'.$data->ticket.'</td>
                 <td>'.$data->waktu_laporan.'</td>
                 <td>'.$data->jenis_klasifikasi.'</td>
-                <td><a href="'.base_url('index.php/beranda/detail/').''.$data->ticket.'/'.$data->id_aduan.'" class="btn btn-primary">Diskusi</a></td>
-                <td><a href="#" style="cursor: default" class="btn '.$btn.' btn-flat btn-md">'.$status.'</a></td>
+                <td>'; 
+                if ($data->status_verif == 1) {
+                  echo '<a href="'.base_url('index.php/beranda/detail/').''.$data->ticket.'/'.$data->id_aduan.'" class="btn btn-primary">Diskusi</a>';
+                }
+                echo '</td>
+                <td>
+                <a href="#" style="cursor: default" class="btn '.$btn.' btn-flat btn-md">'.$status.'</a>
+                </td>
               </tr>
               ';
             }

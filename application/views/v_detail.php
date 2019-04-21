@@ -50,7 +50,13 @@
                 <img class="direct-chat-img" src="<?php echo base_url(); ?>assets/dist/img/user2-160x160.jpg" alt="message user image">
                 <!-- /.direct-chat-img -->
                 <div class="direct-chat-text">
-                  <p><?php echo $data->chat; ?></p>
+                  <p>
+                  <?php if ($data->chat != null): ?>
+                      <?php echo $data->chat; ?>
+                    <?php else: ?>
+                      <a href="<?php echo base_url(); ?>uploads/<?php echo $data->file; ?>" class="btn btn-primary btn-md" target="blank">Download Lampiran</a>
+                  <?php endif ?>
+                  </p>
                 </div>
                 <!-- /.direct-chat-text -->
               </div>
@@ -87,6 +93,15 @@
     </div>
     <!-- /.box-body -->
     <div class="box-footer">
+
+      <?php if ($this->session->flashdata('error') != null): ?>
+        <div class="alert alert-danger"><?php echo $this->session->flashdata('error'); ?></div>
+      <?php endif ?>
+      <form action="#" id="uploadFile" method="post" enctype="multipart/form-data">
+        <div class="input-group" style="margin-bottom: 10px">
+          <input type="file" name="bukti">
+        </div>
+      </form>
       <form action="<?php echo base_url('index.php/beranda/chat'); ?>" method="post">
         <div class="input-group">
           <input type="text" name="chat" placeholder="Type Message ..." class="form-control" required>
@@ -102,3 +117,29 @@
 
 </section>
 <!-- /.content -->
+
+<!-- jQuery 3 -->
+<script src="<?php echo base_url(); ?>assets/jquery/dist/jquery.min.js"></script>
+<script type="text/javascript">
+  $(document).ready(function(){
+        $('input[type="file"]').change(function(e){
+            var fileName = e.target.files[0].name;
+            var data = new FormData(document.getElementById("uploadFile"));
+
+            $.ajax({
+              url: '<?php echo base_url();?>beranda/uploadFile',
+              data: data,
+              type: 'POST',
+              dataType: 'JSON',
+              mimeType: 'multipart/form-data',
+              processData: false,
+              contentType: false,
+              success: function(r) {
+               
+              },
+            })
+
+             window.location.reload();
+        });
+    });
+</script>

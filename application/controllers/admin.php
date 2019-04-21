@@ -142,6 +142,27 @@ class Admin extends CI_Controller {
 		}
 	}
 
+	public function uploadFile()
+	{
+		$config['upload_path'] = './uploads/';
+		$config['allowed_types'] = '*';
+		$config['max_size']  = '100000';
+		
+		$this->load->library('upload', $config);
+		
+		if ( ! $this->upload->do_upload('bukti')){
+			$this->session->set_flashdata('error', $this->upload->display_errors());
+			redirect($this->session->userdata('url'));
+		}
+		else{
+			if ($this->m_admin->uploadFile($this->upload->data())) {
+				redirect($this->session->userdata('url'));
+			} else {
+				redirect($this->session->userdata('url'));
+			}
+		}
+	}
+
 	public function chat()
 	{
 		if ($this->m_admin->chat()) {

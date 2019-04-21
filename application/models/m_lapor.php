@@ -77,7 +77,7 @@ class M_lapor extends CI_Model {
 
 	public function getHistory()
 	{
-		return $this->db->select('id_aduan,ticket,waktu_laporan,jenis_klasifikasi,status_verif')->where('id_pelapor',$this->session->userdata('id_pelapor'))->get('aduan_siber')->result();
+		return $this->db->select('id_aduan,ticket,waktu_laporan,jenis_klasifikasi,status_verif,status')->where('id_pelapor',$this->session->userdata('id_pelapor'))->get('aduan_siber')->result();
 	}
 
 	public function getHistory1()
@@ -115,6 +115,23 @@ class M_lapor extends CI_Model {
 			'status'   => $status,
 			'pelapor'	=>  $this->session->userdata('id_pelapor')
 		);
+
+		$this->db->insert('chat', $object);
+
+		if ($this->db->affected_rows() > 0) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+
+	public function uploadFile($file)
+	{
+		$object = array('id_aduan' => $this->session->userdata('id_aduan'), 
+						'pelapor'	=> $this->session->userdata('id_pelapor'),
+						'file'		=> $file['file_name'],
+						'status'	=> 1
+					);
 
 		$this->db->insert('chat', $object);
 

@@ -55,6 +55,28 @@ class M_admin extends CI_Model {
 		}
 	}
 
+	public function uploadFile($file)
+	{
+		$admin = 'admin_1';
+		if ($this->session->userdata('tipe') != null) {
+			$admin = 'admin_2';
+		}
+		
+		$object = array('id_aduan' => $this->session->userdata('id_aduan'), 
+						$admin	=> $this->session->userdata('id_admin'),
+						'file'		=> $file['file_name'],
+						'status'	=> 1
+					);
+
+		$this->db->insert('chat', $object);
+
+		if ($this->db->affected_rows() > 0) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+
 	public function verifLaporan($id)
 	{
 		$data = array('status_verif' => 1, 'jenis_klasifikasi' => $this->input->post('jenis'));
