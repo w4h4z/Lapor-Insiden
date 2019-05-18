@@ -26,11 +26,58 @@ class Admin extends CI_Controller {
 
 	public function chart()
 	{
+		$jan=0;$feb=0;$mar=0;$apr=0;$mei=0;$jun=0;$jul=0;$ags=0;$sep=0;$okt=0;$nov=0;$des=0;
+		foreach ($this->m_admin->a() as $data) {
+			if (substr($data->waktu_laporan,5,2) == 01) {
+				$jan+=1;
+			} elseif (substr($data->waktu_laporan,5,2) == 02) {
+				$feb+=1;
+			}elseif (substr($data->waktu_laporan,5,2) == 03) {
+				$mar+=1;
+			}elseif (substr($data->waktu_laporan,5,2) == 04) {
+				$apr+=1;
+			}elseif (substr($data->waktu_laporan,5,2) == 05) {
+				$mei+=1;
+			}elseif (substr($data->waktu_laporan,5,2) == 06) {
+				$jun+=1;
+			}elseif (substr($data->waktu_laporan,5,2) == 07) {
+				$jul+=1;
+			}elseif (substr($data->waktu_laporan,6,1) == 8) {
+				$ags+=1;
+			}elseif (substr($data->waktu_laporan,6,1) == 9) {
+				$sep+=1;
+			}elseif (substr($data->waktu_laporan,5,2) == 10) {
+				$okt+=1;
+			}elseif (substr($data->waktu_laporan,5,2) == 11) {
+				$nov+=1;
+			}elseif (substr($data->waktu_laporan,5,2) == 12) {
+				$des+=1;
+			}
+		}
+
+		$data = array(
+			'jan' => $jan,
+			'feb' => $feb,
+			'mar' => $mar,
+			'apr' => $apr,
+			'mei' => $mei,
+			'jun' => $jun,
+			'jul' => $jul,
+			'ags' => $ags,
+			'sep' => $sep,
+			'okt' => $okt,
+			'nov' => $nov,
+			'des' => $des,
+		 );
+
 		if ($this->session->userdata('login') == true) {
 			if ($this->session->userdata('klasifikasi') == 'admin') {
+				$data['donut1'] = $this->m_admin->donutChart(1);
+				$data['donut2'] = $this->m_admin->donutChart(2);
+				$data['donut3'] = $this->m_admin->donutChart(3);
+				$data['donut4'] = $this->m_admin->donutChart(4);
 				$data['main_view'] = 'admin/v_chart';
-				$this->load->view('admin/template',$data);
-				$this->output->enable_profiler(TRUE);	
+				$this->load->view('admin/template',$data);	
 			} else {
 				redirect('beranda/lapor');
 			}

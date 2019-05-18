@@ -19,6 +19,7 @@
             </ul>
             
             <div class="chart">
+              <h3 class="text-center"><b>2019</b></h3>
               <canvas id="areaChart" style="height:250px"></canvas>
             </div>
           </div>
@@ -31,7 +32,7 @@
               <h3 class="box-title">Data</h3>
             </div>
             <div class="box-body chart-responsive">
-              <div class="chart" id="sales-chart" style="height: 300px; position: relative;"></div>
+              <div class="chart" id="aduan-chart" style="height: 300px; position: relative;"></div>
             </div>
             <!-- /.box-body -->
           </div>
@@ -58,27 +59,29 @@
     var areaChart       = new Chart(areaChartCanvas)
 
     var areaChartData = {
-      labels  : ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+      labels  : ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'],
       datasets: [
       {
-        label               : 'Electronics',
-        fillColor           : 'rgba(210, 214, 222, 1)',
-        strokeColor         : 'rgba(210, 214, 222, 1)',
-        pointColor          : 'rgba(210, 214, 222, 1)',
-        pointStrokeColor    : '#c1c7d1',
-        pointHighlightFill  : '#fff',
-        pointHighlightStroke: 'rgba(220,220,220,1)',
-        data                : [65, 59, 80, 81, 56, 55, 40]
-      },
-      {
-        label               : 'Digital Goods',
+        label               : 'Jumlah Aduan',
         fillColor           : 'rgba(60,141,188,0.9)',
         strokeColor         : 'rgba(60,141,188,0.8)',
         pointColor          : '#3b8bba',
         pointStrokeColor    : 'rgba(60,141,188,1)',
         pointHighlightFill  : '#fff',
         pointHighlightStroke: 'rgba(60,141,188,1)',
-        data                : [28, 48, 40, 19, 86, 27, 90]
+        data                : [<?php echo $jan; ?>, 
+                               <?php echo $feb; ?>,
+                               <?php echo $mar; ?>,
+                               <?php echo $apr; ?>,
+                               <?php echo $mei; ?>,
+                               <?php echo $jun; ?>,
+                               <?php echo $jul; ?>,
+                               <?php echo $ags; ?>,
+                               <?php echo $sep; ?>,
+                               <?php echo $okt; ?>,
+                               <?php echo $nov; ?>,
+                               <?php echo $des; ?>
+                            ]
       }
       ]
     }
@@ -127,13 +130,46 @@
 
         //DONUT CHART
     var donut = new Morris.Donut({
-      element: 'sales-chart',
+      element: 'aduan-chart',
       resize: true,
-      colors: ["#3c8dbc", "#f56954", "#00a65a"],
+      colors: ["#3c8dbc", "#f56954", "#00a65a", "#f39c12"],
       data: [
-        {label: "Download Sales", value: 12},
-        {label: "In-Store Sales", value: 30},
-        {label: "Mail-Order Sales", value: 20}
+        {label: "Aduan Open", value: 
+        <?php 
+          if (isset($this->m_admin->donutChart(1)->jumlah)) {
+            echo $this->m_admin->donutChart(1)->jumlah;
+          } else {
+            echo '0';
+          };
+         ?>
+        },
+        {label: "Aduan Close Unsuccessful", value: 
+        <?php 
+          if (isset($this->m_admin->donutChart(2)->jumlah)) {
+            echo $this->m_admin->donutChart(2)->jumlah;
+          } else {
+            echo '0';
+          };
+         ?>
+        },
+        {label: "Aduan Close Successful", value: 
+        <?php 
+          if (isset($this->m_admin->donutChart(3)->jumlah)) {
+            echo $this->m_admin->donutChart(3)->jumlah;
+          } else {
+            echo '0';
+          };
+         ?>
+        },
+        {label: "Aduan Pending", value: 
+          <?php 
+          if (isset($this->m_admin->donutChart(4)->jumlah)) {
+            echo $this->m_admin->donutChart(4)->jumlah;
+          } else {
+            echo '0';
+          };
+           ?>
+        }
       ],
       hideHover: 'auto'
     });

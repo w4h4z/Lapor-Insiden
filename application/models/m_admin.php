@@ -249,6 +249,20 @@ class M_admin extends CI_Model {
 		}
 	}
 
+	public function donutChart($status)
+	{
+		return $this->db->select('count(status) as jumlah,id_aduan')
+						->group_by('status')
+						->where('status', $status)
+						->get('aduan_siber')
+						->row(); 
+	}
+
+	public function a()
+	{
+		return $this->db->select('waktu_laporan')->get('aduan_siber')->result();
+	}
+
 }
 
 /* End of file m_admin.php */
