@@ -37,7 +37,7 @@
                   <td>'.$data->waktu_laporan.'</td>
                   <td>'.$data->jenis_klasifikasi.'</td>
                   <td>
-                  <button class="btn btn-primary btn-flat">Detail</button>
+                  
                   <button class="btn btn-warning btn-flat" data-toggle="modal" data-target="#myModal'.$data->id_aduan.'">Verifikasi</button>
                   </td>
                   </tr>
@@ -94,6 +94,20 @@ foreach ($laporan as $data) {
               </select>
             </div>
             </div>
+
+          <div class="form-group row">
+            <label for="inputEmail3" class="col-sm-12 col-form-label">Ditangani :</label>
+            <div class="col-sm-12">
+              <select class="form-control" name="ditangani">
+                <option value="d1">Deputi 1</option>
+                <option value="d2">Deputi 2</option>
+                <option value="d3">Deputi 3</option>
+                <option value="d4">Deputi 4</option>
+                <option value="p2">Pusat Data dan Informasi</option>
+              </select>
+            </div>
+            </div>
+
             </p>
           </div>
           <div class="modal-footer">

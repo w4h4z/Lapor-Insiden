@@ -70,7 +70,11 @@
                 </div>
                 <img class="direct-chat-img" src="<?php echo base_url(); ?>assets/dist/img/user2-160x160.jpg" alt="message user image">
                 <div class="direct-chat-text">
-                  <?php echo $data->chat; ?>
+                  <?php if ($data->chat != null): ?>
+                      <?php echo $data->chat; ?>
+                    <?php else: ?>
+                      <a href="<?php echo base_url(); ?>uploads/<?php echo $data->file; ?>" class="btn btn-primary btn-md" target="blank">Download Lampiran</a>
+                  <?php endif ?>
 
                   <?php if($data->status == 0){
                     echo '<br><p style="color: black"><b>Menuggu di setujui</b></p>';
@@ -139,7 +143,7 @@
               },
             })
 
-             window.location.reload();
+            window.location.reload();
         });
     });
 </script>

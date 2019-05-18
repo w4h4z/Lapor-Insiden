@@ -9,11 +9,54 @@
 
   <!-- Main content -->
   <section class="content container-fluid">
+    
+    <?php if ($this->session->flashdata('notif') != null): ?>
+      <div class="alert alert-success"><?php echo $this->session->flashdata('notif'); ?></div>
+    <?php endif ?>
 
    <div class="box box-warning direct-chat direct-chat-warning">
     <div class="box-header with-border">
       <h3 class="box-title">Tiket #<?php echo $aduan->ticket;?></h3>
+      <?php if ($this->session->userdata('admin') == 1): ?>
+        <div class="pull-right">
+
+            <b>Ditangani Oleh : </b> 
+             <?php if ($ditangani->d1 == 1): ?>
+              <button class="btn btn-sm btn-info" style="cursor: default;">
+              Deputi 1
+              </button>
+             <?php endif ?> 
+
+             <?php if ($ditangani->d2 == 1): ?>
+              <button class="btn btn-sm btn-info" style="cursor: default;">
+              Deputi 2
+              </button>
+             <?php endif ?> 
+
+             <?php if ($ditangani->d3 == 1): ?>
+              <button class="btn btn-sm btn-info" style="cursor: default;">
+              Deputi 3
+              </button>
+             <?php endif ?> 
+
+             <?php if ($ditangani->d4 == 1): ?>
+              <button class="btn btn-sm btn-info" style="cursor: default;">
+              Deputi 4
+              </button>
+             <?php endif ?> 
+
+             <?php if ($ditangani->p2 == 1): ?>
+              <button class="btn btn-sm btn-info" style="cursor: default;">
+              Pusat data dan informasi
+              </button>
+             <?php endif ?> 
+          |
+          <button class="btn btn-sm btn-success" style="margin-left: 10px" data-toggle="modal" data-target="#myModal">
+            <i class="glyphicon glyphicon-plus"></i>
+          Tambah operator</button></div>
+      <?php endif ?>
     </div>
+
     <!-- /.box-header -->
     <div class="box-body">
       <!-- Conversations are loaded here -->
@@ -64,9 +107,10 @@
               <span class="direct-chat-name pull-right">
               <?php if ($data->tipe != null): ?>
                 <?php echo $data->tipe;?>
-                <?php else: ?>
-                  Pusopkamsinas
-              <?php endif ?>                
+              <?php endif ?>             
+              <?php if ($data->tipe == null): ?>
+                Pusopkamsinas
+              <?php endif ?>   
               </span>
               <span class="direct-chat-timestamp pull-left"><?php echo $data->datetime; ?></span>
             </div>
@@ -121,6 +165,44 @@
 <!-- /.content -->
 </div>
 <!-- /.content-wrapper -->
+
+
+<div id="myModal" class="modal fade" role="dialog">
+      <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title">Tambah Operator</h4>
+          </div>
+          <div class="modal-body">
+            <p>
+            <form method="post" action="<?php echo base_url('index.php/admin/updateDitangani/'); ?>">
+
+            <div class="form-group row">
+            <label for="inputEmail3" class="col-sm-12 col-form-label">Ditangani :</label>
+            <div class="col-sm-12">
+              <select class="form-control" name="ditangani">
+                <option value="d1">Deputi 1</option>
+                <option value="d2">Deputi 2</option>
+                <option value="d3">Deputi 3</option>
+                <option value="d4">Deputi 4</option>
+                <option value="p2">Pusat Data dan Informasi</option>
+              </select>
+            </div>
+            </div>
+
+            </p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            <button type="submit" class="btn btn-success">Submit</button>
+          </div>
+        </div>
+        </form>
+      </div>
+    </div>
+
 
 <!-- jQuery 3 -->
 <script src="<?php echo base_url(); ?>assets/jquery/dist/jquery.min.js"></script>

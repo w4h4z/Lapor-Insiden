@@ -57,15 +57,21 @@ class M_admin extends CI_Model {
 
 	public function uploadFile($file)
 	{
-		$admin = 'admin_1';
-		if ($this->session->userdata('tipe') != null) {
-			$admin = 'admin_2';
+		$admin1 = '';
+		$admin2 = $this->session->userdata('id_admin');
+		$status = '0';
+
+		if ($this->session->userdata('admin') == 1) {
+			$status = 1;
+			$admin1 = $this->session->userdata('id_admin');
+			$admin2 = '';
 		}
 		
 		$object = array('id_aduan' => $this->session->userdata('id_aduan'), 
-						$admin	=> $this->session->userdata('id_admin'),
+						'id_admin1' => $admin1,
+						'id_admin2' => $admin2,
 						'file'		=> $file['file_name'],
-						'status'	=> 1
+						'status'	=> $status
 					);
 
 		$this->db->insert('chat', $object);
@@ -77,23 +83,6 @@ class M_admin extends CI_Model {
 		}
 	}
 
-	public function verifLaporan($id)
-	{
-		$data = array('status_verif' => 1, 'jenis_klasifikasi' => $this->input->post('jenis'));
-
-		$this->db->where('id_aduan', $id)->update('aduan_siber', $data);
-
-		if ($this->db->affected_rows() > 0) {
-			return true;
-		} else {
-			return false;
-		}
-	}
-
-	public function detailAduan($ticket)
-	{
-		return $this->db->where('ticket', $ticket)->join('pelapor', 'pelapor.id_pelapor=aduan_siber.id_pelapor')->get('aduan_siber')->row();
-	}
 
 	public function chat()
 	{
@@ -123,6 +112,96 @@ class M_admin extends CI_Model {
 			return false;
 		}
 	}
+
+	public function updateDitangani($id)
+	{
+		$object = '';
+		if ($this->input->post('ditangani') == 'd1') {
+			$object = array('d1' => 1);
+		} elseif ($this->input->post('ditangani') == 'd2') {
+			$object = array('d2' => 1);
+		} elseif ($this->input->post('ditangani') == 'd3') {
+			$object = array('d3' => 1);
+		}elseif ($this->input->post('ditangani') == 'd4') {
+			$object = array('d4' => 1);
+		}elseif ($this->input->post('ditangani') == 'p2') {
+			$object = array('p2' => 1);
+		}
+
+		$this->db->where('id_aduan', $id)->update('balas_aduan', $object);
+
+		if ($this->db->affected_rows() > 0) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+
+	public function verifLaporan($id)
+	{
+		$data = array('status_verif' => 1, 'jenis_klasifikasi' => $this->input->post('jenis'));
+
+		$this->db->where('id_aduan', $id)->update('aduan_siber', $data);
+
+		$d1=0;
+		$d2=0;
+		$d3=0;
+		$d4=0;
+		$p2=0;
+		
+		if ($this->input->post('ditangani') == 'd1') {
+			$d1=1;
+			$d2=0;
+			$d3=0;
+			$d4=0;
+			$p2=0;
+		} elseif ($this->input->post('ditangani') == 'd2') {
+			$d1=0;
+			$d2=1;
+			$d3=0;
+			$d4=0;
+			$p2=0;
+		} elseif ($this->input->post('ditangani') == 'd3') {
+			$d1=0;
+			$d2=0;
+			$d3=1;
+			$d4=0;
+			$p2=0;
+		}elseif ($this->input->post('ditangani') == 'd4') {
+			$d1=0;
+			$d2=0;
+			$d3=0;
+			$d4=1;
+			$p2=0;
+		}elseif ($this->input->post('ditangani') == 'p2') {
+			$d1=0;
+			$d2=0;
+			$d3=0;
+			$d4=0;
+			$p2=1;
+		}
+
+		$object = array('id_aduan' => $id,'d1' => $d1,'d2' => $d2,'d3' => $d3,'d4' => $d4,'p2' => $p2);
+
+		$this->db->insert('balas_aduan', $object);
+
+		if ($this->db->affected_rows() > 0) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+
+	public function ditanganiOleh()
+	{
+		return $this->db->where('id_aduan', $this->session->userdata('id_aduan'))->get('balas_aduan')->row();
+	}
+
+	public function detailAduan($ticket)
+	{
+		return $this->db->where('ticket', $ticket)->join('pelapor', 'pelapor.id_pelapor=aduan_siber.id_pelapor')->get('aduan_siber')->row();
+	}
+
 
 	public function getChat()
 	{

@@ -29,9 +29,9 @@
         </thead>
         <tbody>
           <?php
-            $status = 'Belum Di Verifikasi';
-            $btn = 'btn-warning';
             foreach ($history as $data) {
+              $status = 'Belum Di Verifikasi';
+              $btn = 'btn-warning';
               if ($data->status_verif == 1) {
                 $status = 'Terverifikasi';
                 $btn = 'btn-success';

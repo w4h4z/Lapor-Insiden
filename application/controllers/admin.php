@@ -52,7 +52,6 @@ class Admin extends CI_Controller {
 		} else {
 			redirect('admin/login');
 		}
-
 	}
 
 	public function progress()
@@ -60,7 +59,11 @@ class Admin extends CI_Controller {
 		if ($this->session->userdata('login') == true) {
 			if ($this->session->userdata('klasifikasi') == 'admin') {
 				$data['main_view'] = 'admin/v_progress';
-				$data['laporan'] = $this->m_lapor->getHistoryVerif();
+				if ($this->session->userdata('admin') == 1) {
+					$data['laporan'] = $this->m_lapor->getHistoryVerif1();
+				} else {
+					$data['laporan'] = $this->m_lapor->getHistoryVerif();
+				}
 				$this->load->view('admin/template',$data);	
 			} else {
 				redirect('beranda/lapor');
@@ -101,7 +104,7 @@ class Admin extends CI_Controller {
 	public function verif_lapor($id)
 	{
 		if ($this->m_admin->verifLaporan($id)) {
-			redirect('admin/laporan');
+			redirect('admin/laporan');	
 		} else {
 			redirect('admin/laporan');
 		}
@@ -131,6 +134,7 @@ class Admin extends CI_Controller {
 				$data['main_view'] = 'admin/v_tangani_laporan';
 				$data['aduan'] = $this->m_admin->detailAduan($ticket);
 				$data['chat'] = $this->m_admin->getChat();
+				$data['ditangani'] = $this->m_admin->ditanganiOleh();
 				$this->load->view('admin/template', $data);	
 
 				$this->output->enable_profiler(TRUE);
@@ -139,6 +143,18 @@ class Admin extends CI_Controller {
 			}
 		} else {
 			redirect('admin/login');
+		}
+	}
+
+	public function updateDitangani()
+	{
+		$id = $this->session->userdata('id_aduan');
+		if ($this->m_admin->updateDitangani($id)) {
+			$this->session->set_flashdata('notif', 'Sukses');
+			redirect('admin/lapor/'.$this->session->userdata('ticket').'/'.$this->session->userdata('id_aduan').'');
+		} else {
+			$this->session->set_flashdata('notif', 'Sukses');
+			redirect('admin/lapor/'.$this->session->userdata('ticket').'/'.$this->session->userdata('id_aduan').'');
 		}
 	}
 

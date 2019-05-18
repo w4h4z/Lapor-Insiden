@@ -87,7 +87,19 @@ class M_lapor extends CI_Model {
 
 	public function getHistoryVerif()
 	{
-		return $this->db->select('id_aduan,ticket,waktu_laporan,jenis_klasifikasi,status')->where('status_verif', 1)->get('aduan_siber')->result();
+		return $this->db->select('*')
+						->join('balas_aduan','balas_aduan.id_aduan=aduan_siber.id_aduan')
+						->where('status_verif', 1)
+						->get('aduan_siber')
+						->result();
+	}
+
+	public function getHistoryVerif1()
+	{
+		return $this->db->select('*')
+						->where('status_verif', 1)
+						->get('aduan_siber')
+						->result();
 	}
 
 	public function getChat()
@@ -105,7 +117,7 @@ class M_lapor extends CI_Model {
 	{
 		$status = 1;
 		$admin1 = '';
-		$admin2 = '';
+		$admin2 = '0';
 
 		$object = array(
 			'id_aduan' => $this->session->userdata('id_aduan'),

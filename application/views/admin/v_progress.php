@@ -31,13 +31,91 @@
               <tbody>
                 <?php
                 foreach ($laporan as $data) {
+                  if ($this->session->userdata('tipe') == 'd1') {
+                    if ($data->d1 == 1) {
+                      echo '
+                      <tr>
+                      <td>'.$data->ticket.'</td>
+                      <td>'.$data->waktu_laporan.'</td>
+                      <td>'.$data->jenis_klasifikasi.'</td>
+                      <td><a href="'.base_url('index.php/admin/lapor/').''.$data->ticket.'/'.$data->id_aduan.'" class="btn btn-primary">Diskusi</a></td>
+                      <td style="text-align: center">';
+                      echo '</td>
+                      </tr>
+                      ';
+                    }
+                  }
+
+                  if ($this->session->userdata('tipe') == 'd2') {
+                    if ($data->d2 == 1) {
+                      echo '
+                      <tr>
+                      <td>'.$data->ticket.'</td>
+                      <td>'.$data->waktu_laporan.'</td>
+                      <td>'.$data->jenis_klasifikasi.'</td>
+                      <td><a href="'.base_url('index.php/admin/lapor/').''.$data->ticket.'/'.$data->id_aduan.'" class="btn btn-primary">Diskusi</a></td>
+                      <td style="text-align: center">';
+                      echo '</td>
+                      </tr>
+                      ';
+                    }
+                  }
+
+                  if ($this->session->userdata('tipe') == 'd3') {
+                    if ($data->d3 == 1) {
+                      echo '
+                      <tr>
+                      <td>'.$data->ticket.'</td>
+                      <td>'.$data->waktu_laporan.'</td>
+                      <td>'.$data->jenis_klasifikasi.'</td>
+                      <td><a href="'.base_url('index.php/admin/lapor/').''.$data->ticket.'/'.$data->id_aduan.'" class="btn btn-primary">Diskusi</a></td>
+                      <td style="text-align: center">';
+                      echo '</td>
+                      </tr>
+                      ';
+                    }
+                  }
+
+                  if ($this->session->userdata('tipe') == 'd4') {
+                    if ($data->d4 == 1) {
+                      echo '
+                      <tr>
+                      <td>'.$data->ticket.'</td>
+                      <td>'.$data->waktu_laporan.'</td>
+                      <td>'.$data->jenis_klasifikasi.'</td>
+                      <td><a href="'.base_url('index.php/admin/lapor/').''.$data->ticket.'/'.$data->id_aduan.'" class="btn btn-primary">Diskusi</a></td>
+                      <td style="text-align: center">';
+                      echo '</td>
+                      </tr>
+                      ';
+                    }
+                  }
+
+                  if ($this->session->userdata('tipe') == 'p2') {
+                    if ($data->p2 == 1) {
+                      echo '
+                      <tr>
+                      <td>'.$data->ticket.'</td>
+                      <td>'.$data->waktu_laporan.'</td>
+                      <td>'.$data->jenis_klasifikasi.'</td>
+                      <td><a href="'.base_url('index.php/admin/lapor/').''.$data->ticket.'/'.$data->id_aduan.'" class="btn btn-primary">Diskusi</a></td>
+                      <td style="text-align: center">';
+                      echo '</td>
+                      </tr>
+                      ';
+                    }
+                  }
+
+
+                if ($this->session->userdata('admin') == 1) {
                   echo '
                   <tr>
                   <td>'.$data->ticket.'</td>
                   <td>'.$data->waktu_laporan.'</td>
                   <td>'.$data->jenis_klasifikasi.'</td>
                   <td><a href="'.base_url('index.php/admin/lapor/').''.$data->ticket.'/'.$data->id_aduan.'" class="btn btn-primary">Diskusi</a></td>
-                  <td>';
+                  <td style="text-align: center">';
+                if ($this->session->userdata('tipe') == null) {
                   if ($data->status == 1) {
                     echo '
                     <select class="form-control" onchange="updateStatus('.$data->id_aduan.',this.value)">
@@ -74,10 +152,23 @@
                       <option value="3">Close Unsuccessful</option>
                     </select>
                     ';
+                  }                   
+                  } else {
+                    if ($data->status == 1) {
+                      echo '<h4>Open</h4>';
+                    } elseif ($data->status == 2) {
+                      echo '<h4>Close Successful</h4>';
+                    }elseif ($data->status == 3) {
+                      echo '<h4>Close Unsuccessful</h4>';
+                    }elseif ($data->status == 4) {
+                      echo '<h4>Pending</h4>';
+                    }
                   }
                   echo '</td>
                   </tr>
                   ';
+                  }
+
                 }
                 ?>
               </tbody>
