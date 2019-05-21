@@ -8,7 +8,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>Lapor Insiden</title>
+  <title>Aduan Siber</title>
 
   <!-- Bootstrap core CSS -->
   <link href="<?php echo base_url(); ?>assets/beranda/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -28,7 +28,7 @@
   <!-- Navigation -->
   <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
     <div class="container">
-      <a class="navbar-brand js-scroll-trigger" href="#page-top">Lapor Insiden</a>
+      <a class="navbar-brand js-scroll-trigger" href="#page-top">Aduan Siber</a>
       <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
         Menu
         <i class="fas fa-bars"></i>
@@ -53,7 +53,7 @@
   <header class="masthead">
     <div class="container d-flex h-100 align-items-center">
       <div class="mx-auto text-center">
-        <h1 class="mx-auto my-0 text-uppercase">Lapor Insiden</h1>
+        <h1 class="mx-auto my-0 text-uppercase">Aduan Siber</h1>
         <h2 class="text-white-50 mx-auto mt-2 mb-5">Laporkan insiden yang anda alami dan akan kami tangani dengan cepat</h2>
         <button class="btn btn-primary" data-toggle="modal" data-target="#login">Lapor Insiden</button>
         <?php if ($this->session->flashdata('success') != null): ?>
@@ -71,8 +71,8 @@
     <div class="container">
       <div class="row">
         <div class="col-lg-8 mx-auto">
-          <h2 class="text-white mb-4">Apa itu Lapor Insiden?</h2>
-          <p class="text-white-50">Lapor Insiden adalah sebuah website dari 
+          <h2 class="text-white mb-4">Apa itu Aduan Siber?</h2>
+          <p class="text-white-50">Aduan Siber adalah sebuah website dari 
             <a href="https://bssn.go.id" target="blank">Badan Siber dan Sandi Negara</a> yang digunakan untuk melaporkan kejadian insiden keamanan siber, kerentanan, phising, indikator serangan, malware dan konten negatif.</p>
           </div>
         </div>

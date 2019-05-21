@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Lapor Insiden | Log in</title>
+  <title>Aduan Siber | Log in</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.7 -->
@@ -28,10 +28,18 @@
 <body class="hold-transition login-page">
 <div class="login-box">
   <div class="login-logo">
-    <a href="#">Lapor <b>Insiden</b></a>
+    <a href="#">Aduan <b>Siber</b></a>
   </div>
   <!-- /.login-logo -->
   <div class="login-box-body">
+
+    <div class="text-center">
+                <div style="margin-bottom: 20px"><img src="<?php echo base_url(); ?>assets/images/logo_bssn.jpeg" style="max-height: 50%;max-width: 50%; margin: auto; display: block"></div>
+                <?php
+                echo $this->session->flashdata('msg');
+                ?>
+              </div>
+
     <p class="login-box-msg">Sign in untuk melanjutkan</p>
     <?php if ($this->session->flashdata('failed') != null): ?>
       <div class="alert alert-danger"><i class="fa fa-times-circle"></i> Login Gagal</div>

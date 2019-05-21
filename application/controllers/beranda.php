@@ -8,7 +8,7 @@ class Beranda extends CI_Controller {
 		parent::__construct();
 		$this->load->model('m_lapor');
 		$this->load->model('m_admin');
-		$this->output->enable_profiler(TRUE);
+		//$this->output->enable_profiler(TRUE);
 	}
 
 	public function index()

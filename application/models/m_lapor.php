@@ -82,7 +82,7 @@ class M_lapor extends CI_Model {
 
 	public function getHistory1()
 	{
-		return $this->db->select('id_aduan,ticket,waktu_laporan,jenis_klasifikasi')->where('status_verif', 0)->get('aduan_siber')->result();
+		return $this->db->select('*')->where('status_verif', 0)->get('aduan_siber')->result();
 	}
 
 	public function getHistoryVerif()

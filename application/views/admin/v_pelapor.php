@@ -21,6 +21,7 @@
             <table id="example1" class="table table-bordered table-striped table-hover">
               <thead>
                 <tr>
+                  <th>No</th>
                   <th>Nama</th>
                   <th>No Telp</th>
                   <th>Email</th>
@@ -29,9 +30,11 @@
               </thead>
               <tbody>
               <?php 
+              $i=0;
                 foreach ($pelapor as $data) {
                   echo '
                     <tr>
+                    <td>'.++$i.'</td>
                     <td>'.$data->nama_pelapor.'</td>
                     <td>'.$data->no_telp.'</td>
                     <td>'.$data->email.'</td>
