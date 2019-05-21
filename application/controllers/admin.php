@@ -24,10 +24,38 @@ class Admin extends CI_Controller {
 		}
 	}
 
+	public function sendEmail()
+	{
+		$this->load->library('email');
+		
+		$config = array(
+			'protocol' 	=> 'smtp',
+			'smtp_host'	=> 'ssl://smtp.googlemail.com', 
+			'smtp_port'	=> 465,
+			'smtp_user'	=> 'rizaldi.wahaz@gmail.com',
+			'smtp_pass'	=> 'boyg3niu50153',
+			'mail_type'	=> 'html',
+			'wordwrap'	=> true
+		);
+
+		$this->email->initialize($config);
+		$this->email->set_newline("\r\n");
+		$this->email->from('rizaldi.wahaz@gmail.com', 'Aduan Siber');
+		$this->email->to('id4server@gmail.com');
+		$this->email->subject('Verifikasi Akun Aduan Siber');
+		$this->email->message('Testing');
+
+		if ($this->email->send()) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+
 	public function chart()
 	{
 		$jan=0;$feb=0;$mar=0;$apr=0;$mei=0;$jun=0;$jul=0;$ags=0;$sep=0;$okt=0;$nov=0;$des=0;
-		foreach ($this->m_admin->a() as $data) {
+		foreach ($this->m_admin->getWaktuLaporan() as $data) {
 			if (substr($data->waktu_laporan,5,2) == 01) {
 				$jan+=1;
 			} elseif (substr($data->waktu_laporan,5,2) == 02) {
@@ -250,6 +278,21 @@ class Admin extends CI_Controller {
 			redirect('admin/lapor/'.$this->session->userdata('ticket').'/'.$this->session->userdata('id_aduan').'');
 		} else {
 			redirect('admin/lapor/'.$this->session->userdata('ticket').'/'.$this->session->userdata('id_aduan').'');
+		}
+	}
+
+	public function pelapor()
+	{
+		if ($this->session->userdata('login') == true) {
+			if ($this->session->userdata('klasifikasi') == 'admin') {
+				$data['pelapor'] = $this->m_admin->getPelapor();
+				$data['main_view'] = 'admin/v_pelapor';
+				$this->load->view('admin/template',$data);	
+			} else {
+				redirect('beranda/lapor');
+			}
+		} else {
+			redirect('admin/login');
 		}
 	}
 

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 18 Mei 2019 pada 11.23
+-- Generation Time: 21 Mei 2019 pada 06.03
 -- Versi Server: 10.1.25-MariaDB
 -- PHP Version: 7.1.7
 
@@ -101,11 +101,11 @@ CREATE TABLE `aduan_siber` (
 
 INSERT INTO `aduan_siber` (`id_aduan`, `id_pelapor`, `id_admin1`, `id_admin2`, `waktu_kejadian`, `waktu_laporan`, `deskripsi_umum`, `nama_ket_aset`, `lokasi_aset`, `identitas_pemilik_aset`, `bukti`, `jenis_klasifikasi`, `analisis`, `solusi`, `ticket`, `status`, `terakhir_diupdate`, `status_verif`) VALUES
 (1, 4, NULL, NULL, '2019-02-12', '2019-04-23 06:55:14', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque nisl risus, volutpat nec eleifend ac, tincidunt vitae mi. Duis id orci et neque volutpat faucibus ut a massa. Sed dapibus eleifend tristique. Pellentesque fringilla a mi nec tempus. Phasellus vel fermentum diam, quis commodo lorem. Interdum et malesuada fames ac ante ipsum primis in faucibus. Morbi hendrerit quis felis sed condimentum. Phasellus volutpat, felis ut molestie sodales, dolor ipsum ornare nulla, vitae tempor sem mauris id mauris. Mauris condimentum non lacus a convallis. Etiam faucibus justo a ligula maximus, eu vulputate lectus semper. Morbi id turpis dolor.', 'nama aset', 'lokasi aset', 'pemilik aset', 'bukti', 'Unauthorized System Access', NULL, NULL, 'uhi1312312', '3', '2019-02-27 17:58:28', 1),
-(3, 3, NULL, NULL, '2019-03-01', '2019-05-18 08:18:46', 'kn', 'jn', 'kmk', 'km', '5a4efa45eae9b-logo-bssn_665_3741.jpg', 'Account Comoromise', NULL, NULL, 'UMCTK', '1', '2019-03-07 06:27:02', 1),
+(3, 3, NULL, NULL, '2019-03-01', '2019-05-18 15:51:01', 'kn', 'jn', 'kmk', 'km', '5a4efa45eae9b-logo-bssn_665_3741.jpg', 'Account Comoromise', NULL, NULL, 'UMCTK', '1', '2019-03-07 06:27:02', 0),
 (5, 4, NULL, NULL, '2019-03-28', '2019-05-18 09:10:38', 'c', 'c', 'c', 'c', 'Target_Semester_Genap_Adam_Waluyo1.docx', 'Account Comoromise', NULL, NULL, 'NCBK4', '1', '2019-03-24 06:08:37', 1),
-(6, 6, NULL, NULL, '2019-04-19', '2019-04-17 09:13:21', 'Jaringan saya terkena penetrasi', 'jaringan server sekolah', 'bogor', 'wahaz', 'Fahdel_Paper_Bahasa_Inggris.pdf', 'Network Penetration', NULL, NULL, 'V6G51', '1', '2019-04-17 09:13:21', 0),
+(6, 6, NULL, NULL, '2019-04-19', '2019-05-18 15:51:04', 'Jaringan saya terkena penetrasi', 'jaringan server sekolah', 'bogor', 'wahaz', 'Fahdel_Paper_Bahasa_Inggris.pdf', 'Account Comoromise', NULL, NULL, 'V6G51', '1', '2019-04-17 09:13:21', 0),
 (7, 6, NULL, NULL, '2019-04-17', '2019-04-23 06:55:17', 'Web saya terkena phising', 'weku.com', 'bogor', 'wahaz', 'TUGAS_Fahdel_Achmad_PTIK.docx', 'Phising', NULL, NULL, 'BQ8VA', '1', '2019-04-17 09:20:31', 1),
-(9, 4, NULL, NULL, '2019-04-17', '2019-05-14 04:48:13', 'a', 'a', 'a', 'a', 'json_pare_vb_net.JPG', 'Konten Negatif', NULL, NULL, '708CF', '1', '2019-04-30 15:25:45', 1);
+(9, 4, NULL, NULL, '2019-04-17', '2019-05-18 15:51:09', 'a', 'a', 'a', 'a', 'json_pare_vb_net.JPG', 'Konten Negatif', NULL, NULL, '708CF', '1', '2019-04-30 15:25:45', 0);
 
 -- --------------------------------------------------------
 
@@ -129,7 +129,11 @@ CREATE TABLE `balas_aduan` (
 
 INSERT INTO `balas_aduan` (`id`, `id_aduan`, `d1`, `d2`, `d3`, `d4`, `p2`) VALUES
 (3, 3, 1, 0, 0, 1, 0),
-(4, 5, 1, 0, 0, 0, 0);
+(4, 5, 1, 0, 0, 0, 0),
+(5, 6, 0, 1, 1, 0, 0),
+(6, 1, 1, 0, 0, 0, 0),
+(7, 7, 0, 1, 0, 0, 1),
+(8, 9, 1, 1, 1, 1, 1);
 
 -- --------------------------------------------------------
 
@@ -205,15 +209,11 @@ INSERT INTO `pelapor` (`id_pelapor`, `nama_pelapor`, `no_telp`, `email`, `passwo
 (2, 'Pelapor 1', '0861384716', 'wildanzhq@gmail.com', '76efb51a6f471449ccf1463e635053fc0bac7625', '18517541511', '', ''),
 (3, 'Pelapor 2', '0861384716', 'rizaldi.wahaz@gmail.com', '0e3282ddd72fba2c5c302d30d18437c7d6823372', '985175415', '', ''),
 (4, 'Waluyo', '1', 'a@a.com', '86f7e437faa5a7fce15d1ddcb9eaeaea377667b8', '1', '', ''),
-(5, 'zz', '', '', 'da39a3ee5e6b4b0d3255bfef95601890afd80709', '', '', ''),
 (6, 'Wahaz', '123', 'o@o.com', '7a81af3e591ac713f81ea1efe93dcf36157d8376', '098', 'o', 'o'),
 (7, 'rico', '000', 'a@g.com', '70c881d4a26984ddce795f6f71817c9cf4480e79', '000', '', ''),
 (8, 'a', 'a', 'ricoosetyawan@gmail.com', '86f7e437faa5a7fce15d1ddcb9eaeaea377667b8', '1', '', ''),
 (9, 'nama', '1212312312', 'nama@mail.com', '5baa61e4c9b93f3f0682250b6cf8331b7ee68fd8', '123123123', '', ''),
-(10, 'mauli', '087654566677', 'adsdasddasd@gmail.com', '331a4f44a6a875b2ce139ae0c9ce5bb5e1ec0d97', '-12', '', ''),
-(11, 'Waluyo', '', '', 'da39a3ee5e6b4b0d3255bfef95601890afd80709', '', '', ''),
-(12, '', '', '', 'da39a3ee5e6b4b0d3255bfef95601890afd80709', '', '', ''),
-(13, '', '', '', 'da39a3ee5e6b4b0d3255bfef95601890afd80709', '', '', '');
+(10, 'mauli', '087654566677', 'adsdasddasd@gmail.com', '331a4f44a6a875b2ce139ae0c9ce5bb5e1ec0d97', '-12', '', '');
 
 --
 -- Indexes for dumped tables
@@ -283,7 +283,7 @@ ALTER TABLE `aduan_siber`
 -- AUTO_INCREMENT for table `balas_aduan`
 --
 ALTER TABLE `balas_aduan`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 --
 -- AUTO_INCREMENT for table `chat`
 --
@@ -293,7 +293,7 @@ ALTER TABLE `chat`
 -- AUTO_INCREMENT for table `pelapor`
 --
 ALTER TABLE `pelapor`
-  MODIFY `id_pelapor` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id_pelapor` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 --
 -- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
 --

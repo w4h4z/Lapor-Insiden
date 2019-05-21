@@ -258,9 +258,14 @@ class M_admin extends CI_Model {
 						->row(); 
 	}
 
-	public function a()
+	public function getWaktuLaporan()
 	{
 		return $this->db->select('waktu_laporan')->get('aduan_siber')->result();
+	}
+
+	public function getPelapor()
+	{
+		return $this->db->get('pelapor')->result();
 	}
 
 }

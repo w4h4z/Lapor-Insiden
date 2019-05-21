@@ -176,6 +176,15 @@
         'info'        : true,
         'autoWidth'   : true
       })
+
+      $('#pelapor').DataTable({
+        'paging'      : true,
+        'lengthChange': true,
+        'searching'   : true,
+        'ordering'    : true,
+        'info'        : true,
+        'autoWidth'   : true
+      })
     })
   </script>
   <script type="text/javascript">

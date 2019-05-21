@@ -14,11 +14,11 @@
               <?php endif ?>
               <li class="active"><a href="<?php echo base_url(); ?>admin/progress">Sedang Ditangani</a></li>
               <?php if ($this->session->userdata('admin') == 1): ?>
-                <li><a href="#">Pelapor</a></li>
+                <li><a href="<?php echo base_url(); ?>admin/pelapor">Pelapor</a></li>
               <?php endif ?>
             </ul>
 
-            <table id="example1" class="table table-bordered table-striped table-hover">
+            <table id="pelapor" class="table table-bordered table-striped table-hover">
               <thead>
                 <tr>
                   <th>Ticket</th>
