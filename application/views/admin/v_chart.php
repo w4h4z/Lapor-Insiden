@@ -14,12 +14,12 @@
               <?php endif ?>
               <li><a href="<?php echo base_url(); ?>admin/progress">Sedang Ditangani</a></li>
               <?php if ($this->session->userdata('admin') == 1): ?>
-                <li><a href="<?php echo base_url(); ?>admin/pelapor">Pelapor</a></li>
+                <li><a href="<?php echo base_url(); ?>admin/pelapor">Manajemen User</a></li>
               <?php endif ?>
             </ul>
             
             <div class="chart">
-              <h3 class="text-center"><b>2019</b></h3>
+              <h3 class="text-center"><b>Tahun 2019</b></h3>
               <canvas id="areaChart" style="height:250px"></canvas>
             </div>
           </div>

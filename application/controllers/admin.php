@@ -8,7 +8,7 @@ class Admin extends CI_Controller {
 		parent::__construct();
 		$this->load->model('m_admin');
 		$this->load->model('m_lapor');
-		//$this->output->enable_profiler(TRUE);
+		$this->output->enable_profiler(TRUE);
 	}
 
 	public function index()
@@ -49,6 +49,28 @@ class Admin extends CI_Controller {
 			return true;
 		} else {
 			return false;
+		}
+	}
+
+	public function hapusPelapor($id)
+	{
+		if ($this->m_admin->hapusPelapor($id)) {
+			$this->session->set_flashdata('notif', 'Sukses');
+			redirect('admin/pelapor');
+		} else {
+			$this->session->set_flashdata('notif', 'Gagal');
+			redirect('admin/pelapor');
+		}
+	}
+
+	public function updatePelapor($id)
+	{
+		if ($this->m_admin->updatePelapor($id)) {
+			$this->session->set_flashdata('notif', 'Sukses');
+			redirect('admin/pelapor');
+		} else {
+			$this->session->set_flashdata('notif', 'Gagal');
+			redirect('admin/pelapor');
 		}
 	}
 

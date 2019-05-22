@@ -14,7 +14,7 @@
               <?php endif ?>
               <li class="active"><a href="<?php echo base_url(); ?>admin/progress">Sedang Ditangani</a></li>
               <?php if ($this->session->userdata('admin') == 1): ?>
-                <li><a href="<?php echo base_url(); ?>admin/pelapor">Pelapor</a></li>
+                <li><a href="<?php echo base_url(); ?>admin/pelapor">Manajemen User</a></li>
               <?php endif ?>
             </ul>
 
@@ -38,7 +38,7 @@
                       <td>'.$data->ticket.'</td>
                       <td>'.$data->waktu_laporan.'</td>
                       <td>'.$data->jenis_klasifikasi.'</td>
-                      <td><a href="'.base_url('index.php/admin/lapor/').''.$data->ticket.'/'.$data->id_aduan.'" class="btn btn-primary">Diskusi</a></td>
+                      <td><a href="'.base_url('index.php/admin/lapor/').''.$data->ticket.'/'.$data->id_aduan.'" class="btn btn-primary btn-flat">Diskusi</a></td>
                       <td style="text-align: center">';
                       echo '</td>
                       </tr>
@@ -53,7 +53,7 @@
                       <td>'.$data->ticket.'</td>
                       <td>'.$data->waktu_laporan.'</td>
                       <td>'.$data->jenis_klasifikasi.'</td>
-                      <td><a href="'.base_url('index.php/admin/lapor/').''.$data->ticket.'/'.$data->id_aduan.'" class="btn btn-primary">Diskusi</a></td>
+                      <td><a href="'.base_url('index.php/admin/lapor/').''.$data->ticket.'/'.$data->id_aduan.'" class="btn btn-primary btn-flat">Diskusi</a></td>
                       <td style="text-align: center">';
                       echo '</td>
                       </tr>
@@ -68,7 +68,7 @@
                       <td>'.$data->ticket.'</td>
                       <td>'.$data->waktu_laporan.'</td>
                       <td>'.$data->jenis_klasifikasi.'</td>
-                      <td><a href="'.base_url('index.php/admin/lapor/').''.$data->ticket.'/'.$data->id_aduan.'" class="btn btn-primary">Diskusi</a></td>
+                      <td><a href="'.base_url('index.php/admin/lapor/').''.$data->ticket.'/'.$data->id_aduan.'" class="btn btn-primary btn-flat">Diskusi</a></td>
                       <td style="text-align: center">';
                       echo '</td>
                       </tr>
@@ -83,7 +83,7 @@
                       <td>'.$data->ticket.'</td>
                       <td>'.$data->waktu_laporan.'</td>
                       <td>'.$data->jenis_klasifikasi.'</td>
-                      <td><a href="'.base_url('index.php/admin/lapor/').''.$data->ticket.'/'.$data->id_aduan.'" class="btn btn-primary">Diskusi</a></td>
+                      <td><a href="'.base_url('index.php/admin/lapor/').''.$data->ticket.'/'.$data->id_aduan.'" class="btn btn-primary btn-flat">Diskusi</a></td>
                       <td style="text-align: center">';
                       echo '</td>
                       </tr>
@@ -98,7 +98,7 @@
                       <td>'.$data->ticket.'</td>
                       <td>'.$data->waktu_laporan.'</td>
                       <td>'.$data->jenis_klasifikasi.'</td>
-                      <td><a href="'.base_url('index.php/admin/lapor/').''.$data->ticket.'/'.$data->id_aduan.'" class="btn btn-primary">Diskusi</a></td>
+                      <td><a href="'.base_url('index.php/admin/lapor/').''.$data->ticket.'/'.$data->id_aduan.'" class="btn btn-primary btn-flat">Diskusi</a></td>
                       <td style="text-align: center">';
                       echo '</td>
                       </tr>
@@ -113,7 +113,7 @@
                   <td>'.$data->ticket.'</td>
                   <td>'.$data->waktu_laporan.'</td>
                   <td>'.$data->jenis_klasifikasi.'</td>
-                  <td><a href="'.base_url('index.php/admin/lapor/').''.$data->ticket.'/'.$data->id_aduan.'" class="btn btn-primary">Diskusi</a></td>
+                  <td><a href="'.base_url('index.php/admin/lapor/').''.$data->ticket.'/'.$data->id_aduan.'" class="btn btn-primary btn-flat">Diskusi</a></td>
                   <td style="text-align: center">';
                 if ($this->session->userdata('tipe') == null) {
                   if ($data->status == 1) {

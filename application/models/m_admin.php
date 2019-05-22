@@ -268,6 +268,35 @@ class M_admin extends CI_Model {
 		return $this->db->get('pelapor')->result();
 	}
 
+	public function hapusPelapor($id)
+	{
+		$this->db->where('id_pelapor', $id)->delete('pelapor');
+		if ($this->db->affected_rows() > 0) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+
+	public function updatePelapor($id)
+	{
+				$object = array('nama_pelapor' => $this->input->post('regNama'),
+					  'no_telp'		 => $this->input->post('regTelp'),
+					  'email'		 => $this->input->post('regEmail'),
+					  'no_id'		 => $this->input->post('regId'),
+					  'nama_org'	 => $this->input->post('namaOrg'),
+					  'alamat_org'	 => $this->input->post('alamatOrg')
+					);
+
+		$this->db->where('id_pelapor', $id)->update('pelapor', $object);
+
+		if ($this->db->affected_rows() > 0) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+
 }
 
 /* End of file m_admin.php */

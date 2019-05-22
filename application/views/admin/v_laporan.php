@@ -15,7 +15,7 @@
               <?php endif ?>
               <li><a href="<?php echo base_url(); ?>admin/progress">Sedang Ditangani</a></li>
               <?php if ($this->session->userdata('admin') == 1): ?>
-                <li><a href="<?php echo base_url(); ?>admin/pelapor">Pelapor</a></li>
+                <li><a href="<?php echo base_url(); ?>admin/pelapor">Manajemen User</a></li>
               <?php endif ?>
             </ul>
 
