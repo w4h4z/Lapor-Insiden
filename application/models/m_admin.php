@@ -71,7 +71,7 @@ class M_admin extends CI_Model {
 						'id_admin1' => $admin1,
 						'id_admin2' => $admin2,
 						'file'		=> $file['file_name'],
-						'status'	=> $status
+						'status_chat'	=> $status
 					);
 
 		$this->db->insert('chat', $object);
@@ -101,7 +101,7 @@ class M_admin extends CI_Model {
 			'id_admin1' => $admin1,
 			'id_admin2' => $admin2,
 			'chat' 	   => $this->input->post('chat'),
-			'status'   => $status
+			'status_chat'   => $status
 		);
 
 		$this->db->insert('chat', $object);
@@ -116,16 +116,28 @@ class M_admin extends CI_Model {
 	public function updateDitangani($id)
 	{
 		$object = '';
-		if ($this->input->post('ditangani') == 'd1') {
-			$object = array('d1' => 1);
-		} elseif ($this->input->post('ditangani') == 'd2') {
-			$object = array('d2' => 1);
-		} elseif ($this->input->post('ditangani') == 'd3') {
-			$object = array('d3' => 1);
-		}elseif ($this->input->post('ditangani') == 'd4') {
-			$object = array('d4' => 1);
-		}elseif ($this->input->post('ditangani') == 'p2') {
-			$object = array('p2' => 1);
+		if ($this->input->post('ditangani') == 'd11') {
+			$object = array('d11' => 1);
+		} elseif ($this->input->post('ditangani') == 'd12') {
+			$object = array('d12' => 1);
+		} elseif ($this->input->post('ditangani') == 'd13') {
+			$object = array('d13' => 1);
+		}elseif ($this->input->post('ditangani') == 'd14') {
+			$object = array('d14' => 1);
+		}elseif ($this->input->post('ditangani') == 'd21') {
+			$object = array('d21' => 1);
+		}elseif ($this->input->post('ditangani') == 'd22') {
+			$object = array('d22' => 1);
+		}elseif ($this->input->post('ditangani') == 'd23') {
+			$object = array('d23' => 1);
+		}elseif ($this->input->post('ditangani') == 'd31') {
+			$object = array('d31' => 1);
+		}elseif ($this->input->post('ditangani') == '32') {
+			$object = array('d32' => 1);
+		}elseif ($this->input->post('ditangani') == '33') {
+			$object = array('d33' => 1);
+		}elseif ($this->input->post('ditangani') == 'p4') {
+			$object = array('p4' => 1);
 		}
 
 		$this->db->where('id_aduan', $id)->update('balas_aduan', $object);
@@ -143,45 +155,33 @@ class M_admin extends CI_Model {
 
 		$this->db->where('id_aduan', $id)->update('aduan_siber', $data);
 
-		$d1=0;
-		$d2=0;
-		$d3=0;
-		$d4=0;
-		$p2=0;
+		$d11=0;$d12=0;$d13=0;$d14=0;$d21=0;$d22=0;$d23=0;$d31=0;$d32=0;$d33=0;$p4=0;
 		
-		if ($this->input->post('ditangani') == 'd1') {
-			$d1=1;
-			$d2=0;
-			$d3=0;
-			$d4=0;
-			$p2=0;
-		} elseif ($this->input->post('ditangani') == 'd2') {
-			$d1=0;
-			$d2=1;
-			$d3=0;
-			$d4=0;
-			$p2=0;
-		} elseif ($this->input->post('ditangani') == 'd3') {
-			$d1=0;
-			$d2=0;
-			$d3=1;
-			$d4=0;
-			$p2=0;
-		}elseif ($this->input->post('ditangani') == 'd4') {
-			$d1=0;
-			$d2=0;
-			$d3=0;
-			$d4=1;
-			$p2=0;
-		}elseif ($this->input->post('ditangani') == 'p2') {
-			$d1=0;
-			$d2=0;
-			$d3=0;
-			$d4=0;
-			$p2=1;
+		if ($this->input->post('ditangani') == 'd11') {
+			$d11=1;$d12=0;$d13=0;$d14=0;$d21=0;$d22=0;$d23=0;$d31=0;$d32=0;$d33=0;$p4=0;
+		} elseif ($this->input->post('ditangani') == 'd12') {
+$d11=0;$d12=1;$d13=0;$d14=0;$d21=0;$d22=0;$d23=0;$d31=0;$d32=0;$d33=0;$p4=0;
+		} elseif ($this->input->post('ditangani') == 'd13') {
+$d11=0;$d12=0;$d13=1;$d14=0;$d21=0;$d22=0;$d23=0;$d31=0;$d32=0;$d33=0;$p4=0;
+		}elseif ($this->input->post('ditangani') == 'd14') {
+	$d11=0;$d12=0;$d13=0;$d14=1;$d21=0;$d22=0;$d23=0;$d31=0;$d32=0;$d33=0;$p4=0;
+		}elseif ($this->input->post('ditangani') == 'd21') {
+$d11=0;$d12=0;$d13=0;$d14=0;$d21=1;$d22=0;$d23=0;$d31=0;$d32=0;$d33=0;$p4=0;
+		}elseif ($this->input->post('ditangani') == 'd22') {
+$d11=0;$d12=0;$d13=0;$d14=0;$d21=0;$d22=1;$d23=0;$d31=0;$d32=0;$d33=0;$p4=0;
+		}elseif ($this->input->post('ditangani') == 'd23') {
+$d11=0;$d12=0;$d13=0;$d14=0;$d21=0;$d22=0;$d23=1;$d31=0;$d32=0;$d33=0;$p4=0;
+		}elseif ($this->input->post('ditangani') == 'd31') {
+$d11=0;$d12=0;$d13=0;$d14=0;$d21=0;$d22=0;$d23=0;$d31=1;$d32=0;$d33=0;$p4=0;
+		}elseif ($this->input->post('ditangani') == 'd32') {
+$d11=0;$d12=0;$d13=0;$d14=0;$d21=0;$d22=0;$d23=0;$d31=0;$d32=1;$d33=0;$p4=0;
+		}elseif ($this->input->post('ditangani') == 'd33') {
+$d11=0;$d12=0;$d13=0;$d14=0;$d21=0;$d22=0;$d23=0;$d31=0;$d32=0;$d33=1;$p4=0;
+		}elseif ($this->input->post('ditangani') == 'p4') {
+$d11=0;$d12=0;$d13=0;$d14=0;$d21=0;$d22=0;$d23=0;$d31=0;$d32=0;$d33=0;$p4=1;
 		}
 
-		$object = array('id_aduan' => $id,'d1' => $d1,'d2' => $d2,'d3' => $d3,'d4' => $d4,'p2' => $p2);
+		$object = array('id_aduan' => $id,'d11' => $d11,'d12' => $d12,'d13' => $d13,'d14' => $d14,'d21' => $d21,'d22' => $d22,'d23' => $d23,'d31' => $d31,'d32' => $d32,'d33' => $d33,'p4' => $p4);
 
 		$this->db->insert('balas_aduan', $object);
 
@@ -215,7 +215,7 @@ class M_admin extends CI_Model {
 
 	public function tampilChat($id)
 	{
-		$object = array('status' => 1);
+		$object = array('status_chat' => 1);
 
 		$this->db->where('id', $id)->update('chat', $object);
 

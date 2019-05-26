@@ -66,7 +66,7 @@
               <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">Selamat Datang, <?php echo $this->session->userdata('nama_admin'); ?>  <span class="caret"></span></a>
                 <ul class="dropdown-menu" role="menu">
-                  <li><a href="#" data-toggle="modal" data-target="#myModal">Edit Profil</a></li>
+                  <!-- <li><a href="#" data-toggle="modal" data-target="#myModal">Edit Profil</a></li> -->
                   <li class="divider"></li>
                   <li><a href="<?php echo base_url('beranda/logout');?>">Logout</a></li>
                 </ul>

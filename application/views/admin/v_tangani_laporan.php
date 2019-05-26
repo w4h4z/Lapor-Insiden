@@ -21,33 +21,69 @@
         <div class="pull-right">
 
             <b>Ditangani Oleh : </b> 
-             <?php if ($ditangani->d1 == 1): ?>
+             <?php if ($ditangani->d11 == 1): ?>
               <button class="btn btn-sm btn-info" style="cursor: default;">
-              Deputi 1
+              Direktorat Identifikasi Kerentanan dan Penilaian Risiko Pemerintah, Deputi I
               </button>
              <?php endif ?> 
 
-             <?php if ($ditangani->d2 == 1): ?>
+             <?php if ($ditangani->d12 == 1): ?>
               <button class="btn btn-sm btn-info" style="cursor: default;">
-              Deputi 2
+              Direktorat Identifikasi Kerentanan dan Penilaian Risiko Infrastruktur Informasi Kritikal Nasional, Deputi I
               </button>
              <?php endif ?> 
 
-             <?php if ($ditangani->d3 == 1): ?>
+             <?php if ($ditangani->d13 == 1): ?>
               <button class="btn btn-sm btn-info" style="cursor: default;">
-              Deputi 3
+              Direktorat Identifikasi Kerentanan dan Penilaian Risiko Ekonomi Digital, Deputi I
               </button>
              <?php endif ?> 
 
-             <?php if ($ditangani->d4 == 1): ?>
+             <?php if ($ditangani->d14 == 1): ?>
               <button class="btn btn-sm btn-info" style="cursor: default;">
-              Deputi 4
+              Direktorat Deteksi Ancaman, Deputi I
               </button>
              <?php endif ?> 
 
-             <?php if ($ditangani->p2 == 1): ?>
+             <?php if ($ditangani->d21 == 1): ?>
               <button class="btn btn-sm btn-info" style="cursor: default;">
-              Pusat data dan informasi
+              Direktorat Proteksi Pemerintah, Deputi II
+              </button>
+             <?php endif ?> 
+
+             <?php if ($ditangani->d22 == 1): ?>
+              <button class="btn btn-sm btn-info" style="cursor: default;">
+              Direktorat Proteksi Infrastruktur Informasi Kritikal Nasional, Deputi II
+              </button>
+             <?php endif ?> 
+
+             <?php if ($ditangani->d23 == 1): ?>
+              <button class="btn btn-sm btn-info" style="cursor: default;">
+              Direktorat Proteksi Ekonomi Digital, Deputi II
+              </button>
+             <?php endif ?> 
+
+             <?php if ($ditangani->d31 == 1): ?>
+              <button class="btn btn-sm btn-info" style="cursor: default;">
+              Direktorat Penanggulangan dan Pemulihan Pemerintah, Deputi III
+              </button>
+             <?php endif ?> 
+
+             <?php if ($ditangani->d32 == 1): ?>
+              <button class="btn btn-sm btn-info" style="cursor: default;">
+              Direktorat Penanggulangan dan Pemulihan Infrastruktur Informasi Kritikal Nasional, Deputi III
+              </button>
+             <?php endif ?> 
+
+             <?php if ($ditangani->d33 == 1): ?>
+              <button class="btn btn-sm btn-info" style="cursor: default;">
+              Direktorat Penanggulangan dan Pemulihan Ekonomi Digital, Deputi III
+              </button>
+             <?php endif ?> 
+
+             <?php if ($ditangani->p4 == 1): ?>
+              <button class="btn btn-sm btn-info" style="cursor: default;">
+              Kepala Pusat Data dan Teknologi Informasi Komunikasi
               </button>
              <?php endif ?> 
           |
@@ -124,11 +160,11 @@
                   <?php endif ?>
                 </p>
 
-              <?php if($data->status == 0){
+              <?php if($data->status_chat == 0){
                 echo '<br><p style="color: black"><b>Menunggu di setujui</b></p>';
               }?>
 
-              <?php if ($this->session->userdata('admin') == 1 && $data->status == 0): ?>
+              <?php if ($this->session->userdata('admin') == 1 && $data->status_chat == 0): ?>
                 <a href="<?php echo base_url('index.php/admin/tampilChat/'); ?><?php echo $data->id; ?>" class="btn btn-success btn-sm">Tampilkan</a>
                 <a href="<?php echo base_url('index.php/admin/deleteChat/'); ?><?php echo $data->id; ?>" class="btn btn-danger btn-sm">Hapus</a>  
               <?php endif ?>
@@ -183,11 +219,29 @@
             <label for="inputEmail3" class="col-sm-12 col-form-label">Ditangani :</label>
             <div class="col-sm-12">
               <select class="form-control" name="ditangani">
-                <option value="d1">Deputi 1</option>
-                <option value="d2">Deputi 2</option>
-                <option value="d3">Deputi 3</option>
-                <option value="d4">Deputi 4</option>
-                <option value="p2">Pusat Data dan Informasi</option>
+                <option value="d11">Direktorat Identifikasi Kerentanan dan Penilaian Risiko Pemerintah, Deputi I
+</option>
+                <option value="d12">Direktorat Identifikasi Kerentanan dan Penilaian Risiko Infrastruktur Informasi Kritikal Nasional, Deputi I
+
+</option>
+                <option value="d13">Direktorat Identifikasi Kerentanan dan Penilaian Risiko Ekonomi Digital, Deputi I
+</option>
+                <option value="d14">Direktorat Deteksi Ancaman, Deputi I
+</option>
+                <option value="d21">Direktorat Proteksi Pemerintah, Deputi II
+</option>
+                <option value="d22">Direktorat Proteksi Infrastruktur Informasi Kritikal Nasional, Deputi II
+</option>
+                <option value="d23">Direktorat Proteksi Ekonomi Digital, Deputi II
+</option>
+                <option value="d31">Direktorat Penanggulangan dan Pemulihan Pemerintah, Deputi III
+</option>
+                <option value="d32">Direktorat Penanggulangan dan Pemulihan Infrastruktur Informasi Kritikal Nasional, Deputi III
+</option>
+                <option value="d33">Direktorat Penanggulangan dan Pemulihan Ekonomi Digital, Deputi III
+</option>
+                <option value="p4">Kepala Pusat Data dan Teknologi Informasi Komunikasi
+</option>
               </select>
             </div>
             </div>

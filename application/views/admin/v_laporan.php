@@ -22,6 +22,7 @@
             <table id="example1" class="table table-bordered table-striped table-hover">
               <thead>
                 <tr>
+                  <th>No</th>
                   <th>Ticket</th>
                   <th>Waktu Laporan</th>
                   <th>Jenis Laporan</th>
@@ -30,9 +31,11 @@
               </thead>
               <tbody>
                 <?php
+                $i=1;
                 foreach ($laporan as $data) {
                   echo '
                   <tr>
+                  <td>'.$i++.'</td>
                   <td>'.$data->ticket.'</td>
                   <td>'.$data->waktu_laporan.'</td>
                   <td>'.$data->jenis_klasifikasi.'</td>
@@ -100,11 +103,29 @@ foreach ($laporan as $data) {
             <label for="inputEmail3" class="col-sm-12 col-form-label">Ditangani :</label>
             <div class="col-sm-12">
               <select class="form-control" name="ditangani">
-                <option value="d1">Deputi 1</option>
-                <option value="d2">Deputi 2</option>
-                <option value="d3">Deputi 3</option>
-                <option value="d4">Deputi 4</option>
-                <option value="p2">Pusat Data dan Informasi</option>
+                <option value="d11">Direktorat Identifikasi Kerentanan dan Penilaian Risiko Pemerintah, Deputi I
+</option>
+                <option value="d12">Direktorat Identifikasi Kerentanan dan Penilaian Risiko Infrastruktur Informasi Kritikal Nasional, Deputi I
+
+</option>
+                <option value="d13">Direktorat Identifikasi Kerentanan dan Penilaian Risiko Ekonomi Digital, Deputi I
+</option>
+                <option value="d14">Direktorat Deteksi Ancaman, Deputi I
+</option>
+                <option value="d21">Direktorat Proteksi Pemerintah, Deputi II
+</option>
+                <option value="d22">Direktorat Proteksi Infrastruktur Informasi Kritikal Nasional, Deputi II
+</option>
+                <option value="d23">Direktorat Proteksi Ekonomi Digital, Deputi II
+</option>
+                <option value="d31">Direktorat Penanggulangan dan Pemulihan Pemerintah, Deputi III
+</option>
+                <option value="d32">Direktorat Penanggulangan dan Pemulihan Infrastruktur Informasi Kritikal Nasional, Deputi III
+</option>
+                <option value="d33">Direktorat Penanggulangan dan Pemulihan Ekonomi Digital, Deputi III
+</option>
+                <option value="p4">Kepala Pusat Data dan Teknologi Informasi Komunikasi
+</option>
               </select>
             </div>
             </div>
