@@ -14,7 +14,7 @@
 
   <div class="box box-success" id="box-laporan">
     <div class="box-header with-border">
-      <h3 class="box-title">History Laporan Insiden</h3>
+      <h3 class="box-title">History Aduan Siber</h3>
     </div>
     <div class="box-body" style="font-size: 1.0em">
       <table id="example1" class="table table-bordered table-striped table-hover">

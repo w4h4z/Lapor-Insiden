@@ -24,34 +24,6 @@ class Admin extends CI_Controller {
 		}
 	}
 
-	public function sendEmail()
-	{
-		$this->load->library('email');
-		
-		$config = array(
-			'protocol' 	=> 'smtp',
-			'smtp_host'	=> 'ssl://smtp.googlemail.com', 
-			'smtp_port'	=> 465,
-			'smtp_user'	=> 'rizaldi.wahaz@gmail.com',
-			'smtp_pass'	=> 'boyg3niu50153',
-			'mail_type'	=> 'html',
-			'wordwrap'	=> true
-		);
-
-		$this->email->initialize($config);
-		$this->email->set_newline("\r\n");
-		$this->email->from('rizaldi.wahaz@gmail.com', 'Aduan Siber');
-		$this->email->to('id4server@gmail.com');
-		$this->email->subject('Verifikasi Akun Aduan Siber');
-		$this->email->message('Testing');
-
-		if ($this->email->send()) {
-			return true;
-		} else {
-			return false;
-		}
-	}
-
 	public function hapusPelapor($id)
 	{
 		if ($this->m_admin->hapusPelapor($id)) {

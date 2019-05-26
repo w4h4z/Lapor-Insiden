@@ -5,13 +5,17 @@ class M_lapor extends CI_Model {
 	
 	public function login()
 	{
-		$query = $this->db->select('id_pelapor,email,password,nama_pelapor,no_telp,no_id')
+		$query = $this->db->select('id_pelapor,email,password,nama_pelapor,no_telp,no_id,status')
 				 ->where('email', $this->input->post('emailMasuk'))
 				 ->where('password', sha1($this->input->post('passwordMasuk')))
 				 ->get('pelapor');
 
 		if ($this->db->affected_rows() > 0) {
 			$data = $query->row();
+
+			if ($data->status == 0) {
+				return false;
+			}
 
 			$session = array('id_pelapor'	=> $data->id_pelapor,
 							 'nama_pelapor' => $data->nama_pelapor,
@@ -20,7 +24,8 @@ class M_lapor extends CI_Model {
 							 'password'		=> $data->password,
 							 'no_id'		=> $data->no_id,
 							 'login'		=> true,
-							 'klasifikasi'	=> 'user'
+							 'klasifikasi'	=> 'user',
+							 'status'		=> $data->status
 						);
 
 			$this->session->set_userdata( $session );
@@ -146,6 +151,18 @@ class M_lapor extends CI_Model {
 					);
 
 		$this->db->insert('chat', $object);
+
+		if ($this->db->affected_rows() > 0) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+
+	public function aktivasiAkun($id)
+	{
+		$object = array('status' => 1 );
+		$this->db->where('id_pelapor', $id)->update('pelapor', $object);
 
 		if ($this->db->affected_rows() > 0) {
 			return true;

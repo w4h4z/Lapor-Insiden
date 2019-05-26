@@ -14,7 +14,7 @@
 
   <div class="box box-warning" id="box-laporan">
     <div class="box-header with-border">
-      <h3 class="box-title">Form Laporan Insiden</h3>
+      <h3 class="box-title">Form Aduan Siber</h3>
     </div>
     <div class="box-body" style="font-size: 1.0em">
       <div class="col-sm-8">

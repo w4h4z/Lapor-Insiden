@@ -275,7 +275,7 @@ class M_admin extends CI_Model {
 			return true;
 		} else {
 			return false;
-		}
+		} 
 	}
 
 	public function updatePelapor($id)

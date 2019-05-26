@@ -26,8 +26,12 @@ class Beranda extends CI_Controller {
 
 	public function lapor()
 	{
-		$data['main_view'] = 'v_lapor';
-		$this->load->view('template', $data);
+		if ($this->session->userdata('login') == true) {
+			$data['main_view'] = 'v_lapor';
+			$this->load->view('template', $data);
+		} else {
+			redirect('beranda');
+		}
 	}
 
 	public function history()
@@ -42,7 +46,7 @@ class Beranda extends CI_Controller {
 		if ($this->m_lapor->login()) {
 			redirect('beranda/lapor');
 		} else {
-			$this->session->set_flashdata('failed', 'Login Gagal');
+			$this->session->set_flashdata('failed', 'Login Gagal, cek kembali email dan password anda/aktivasi akun anda');
 			redirect('beranda');
 		}
 	}
@@ -63,9 +67,55 @@ class Beranda extends CI_Controller {
 		}
 	}
 
+	public function aktivasiAkun($id)
+	{
+		$base_64 = $id . str_repeat('=', strlen($id) % 4);
+		$id=base64_decode($base_64);
+
+		if ($this->m_lapor->aktivasiAkun($id)) {
+			$this->session->set_flashdata('success', 'Aktivasi email anda berhasil, silahkan login untuk melanjutkan');
+			redirect('beranda');
+		} else {
+			redirect('beranda');
+		}
+	}
+
+	public function sendEmail($id)
+	{
+		$this->load->library('email');
+		
+		$config = array(
+			'protocol' 	=> 'smtp',
+			'smtp_host'	=> 'ssl://smtp.googlemail.com', 
+			'smtp_port'	=> 465,
+			'smtp_user'	=> 'rizaldi.wahaz@gmail.com',
+			'smtp_pass'	=> 'boyg3niu50153',
+			'mail_type'	=> 'html',
+			'wordwrap'	=> true
+		);
+
+		$id=base64_encode($id);
+		$idtrim = rtrim($id, '=');
+		$link = base_url().'beranda/aktivasiAkun/'.$idtrim;
+		$this->email->initialize($config);
+		$this->email->set_newline("\r\n");
+		$this->email->from('rizaldi.wahaz@gmail.com', 'Aduan Siber');
+		$this->email->to('rizaldi.wahaz@gmail.com');
+		$this->email->subject('Verifikasi Akun Aduan Siber');
+		$this->email->message('Klik link berikut untuk aktivasi email anda '.$link);
+
+		if ($this->email->send()) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+
 	public function register()
 	{
 		if ($this->m_lapor->register()) {
+			$id = $this->db->select('id_pelapor')->order_by('id_pelapor',"desc")->limit(1)->get('pelapor')->row()->id_pelapor;
+			$this->sendEmail($id);
 			$this->session->set_flashdata('success', '<b>Pendaftaran Berhasil</b> Silahkan Cek Alamat Email Anda.');
 			redirect('beranda');
 		} else {
@@ -73,6 +123,7 @@ class Beranda extends CI_Controller {
 			redirect('beranda');
 		}
 	}
+
 
 	public function uploadFile()
 	{
