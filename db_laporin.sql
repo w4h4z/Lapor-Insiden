@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 21 Mei 2019 pada 06.03
+-- Generation Time: 26 Mei 2019 pada 06.05
 -- Versi Server: 10.1.25-MariaDB
 -- PHP Version: 7.1.7
 
@@ -40,8 +40,7 @@ CREATE TABLE `admin_1` (
 --
 
 INSERT INTO `admin_1` (`id_admin1`, `nama_admin1`, `username_admin1`, `password_admin1`) VALUES
-(1, 'Admin Satu 1', 'admin11', 'd033e22ae348aeb5660fc2140aec35850c4da997'),
-(2, 'Admin Satu 2', 'admin12', 'd033e22ae348aeb5660fc2140aec35850c4da997');
+(1, 'Pussopkamsinas', 'pussopkamsinas', '61c86def741a02f32e71548862374d8600b3e10f');
 
 -- --------------------------------------------------------
 
@@ -52,7 +51,7 @@ INSERT INTO `admin_1` (`id_admin1`, `nama_admin1`, `username_admin1`, `password_
 CREATE TABLE `admin_2` (
   `id_admin2` int(11) NOT NULL,
   `nama_admin2` varchar(50) NOT NULL,
-  `tipe` enum('d1','d2','d3','d4','p2') NOT NULL,
+  `tipe` text NOT NULL,
   `username_admin2` text NOT NULL,
   `password_admin2` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -62,11 +61,17 @@ CREATE TABLE `admin_2` (
 --
 
 INSERT INTO `admin_2` (`id_admin2`, `nama_admin2`, `tipe`, `username_admin2`, `password_admin2`) VALUES
-(1, 'Admin Dua 1', 'd1', 'admin21', 'd033e22ae348aeb5660fc2140aec35850c4da997'),
-(2, 'Admin Dua 2', 'd3', 'admin22', 'd033e22ae348aeb5660fc2140aec35850c4da997'),
-(3, 'admin dua 3', 'd2', 'a', '86f7e437faa5a7fce15d1ddcb9eaeaea377667b8'),
-(4, 'lm', 'd4', 'lm', '86f7e437faa5a7fce15d1ddcb9eaeaea377667b8'),
-(5, 'k', 'p2', 'kmkm', '86f7e437faa5a7fce15d1ddcb9eaeaea377667b8');
+(1, 'Admin Dua 1', 'Direktorat Identifikasi Kerentanan dan Penilaian Risiko Pemerintah, Deputi I\r\n', 'admin11', 'd033e22ae348aeb5660fc2140aec35850c4da997'),
+(2, 'Admin Dua 2', 'Direktorat Identifikasi Kerentanan dan Penilaian Risiko Infrastruktur Informasi Kritikal Nasional, Deputi I\r\n', 'admin12', 'd033e22ae348aeb5660fc2140aec35850c4da997'),
+(3, 'admin dua 3', 'Direktorat Identifikasi Kerentanan dan Penilaian Risiko Ekonomi Digital, Deputi I\r\n', 'admin13', 'd033e22ae348aeb5660fc2140aec35850c4da997'),
+(4, 'lm', 'Direktorat Proteksi Pemerintah, Deputi II\r\n', 'admin21', 'd033e22ae348aeb5660fc2140aec35850c4da997'),
+(5, 'k', 'Direktorat Deteksi Ancaman, Deputi I\r\n', 'admin14', 'd033e22ae348aeb5660fc2140aec35850c4da997'),
+(6, 'lm', 'Direktorat Proteksi Infrastruktur Informasi Kritikal Nasional, Deputi II\r\n', 'admin22', 'd033e22ae348aeb5660fc2140aec35850c4da997'),
+(7, 'lm', 'Direktorat Proteksi Ekonomi Digital, Deputi II\r\n', 'admin23', 'd033e22ae348aeb5660fc2140aec35850c4da997'),
+(8, 'lm', 'Direktorat Penanggulangan dan Pemulihan Pemerintah, Deputi III\r\n', 'admin31', 'd033e22ae348aeb5660fc2140aec35850c4da997'),
+(9, 'lm', 'Direktorat Penanggulangan dan Pemulihan Infrastruktur Informasi Kritikal Nasional, Deputi III\r\n', 'admin32', 'd033e22ae348aeb5660fc2140aec35850c4da997'),
+(10, 'lm', 'Direktorat Penanggulangan dan Pemulihan Ekonomi Digital, Deputi III\r\n', 'admin33', 'd033e22ae348aeb5660fc2140aec35850c4da997'),
+(11, 'lm', 'Kepala Pusat Data dan Teknologi Informasi Komunikasi\r\n', 'p4', 'd033e22ae348aeb5660fc2140aec35850c4da997');
 
 -- --------------------------------------------------------
 
@@ -105,7 +110,7 @@ INSERT INTO `aduan_siber` (`id_aduan`, `id_pelapor`, `id_admin1`, `id_admin2`, `
 (5, 4, NULL, NULL, '2019-03-28', '2019-05-18 09:10:38', 'c', 'c', 'c', 'c', 'Target_Semester_Genap_Adam_Waluyo1.docx', 'Account Comoromise', NULL, NULL, 'NCBK4', '1', '2019-03-24 06:08:37', 1),
 (6, 6, NULL, NULL, '2019-04-19', '2019-05-18 15:51:04', 'Jaringan saya terkena penetrasi', 'jaringan server sekolah', 'bogor', 'wahaz', 'Fahdel_Paper_Bahasa_Inggris.pdf', 'Account Comoromise', NULL, NULL, 'V6G51', '1', '2019-04-17 09:13:21', 0),
 (7, 6, NULL, NULL, '2019-04-17', '2019-04-23 06:55:17', 'Web saya terkena phising', 'weku.com', 'bogor', 'wahaz', 'TUGAS_Fahdel_Achmad_PTIK.docx', 'Phising', NULL, NULL, 'BQ8VA', '1', '2019-04-17 09:20:31', 1),
-(9, 4, NULL, NULL, '2019-04-17', '2019-05-18 15:51:09', 'a', 'a', 'a', 'a', 'json_pare_vb_net.JPG', 'Konten Negatif', NULL, NULL, '708CF', '1', '2019-04-30 15:25:45', 0);
+(9, 4, NULL, NULL, '2019-04-17', '2019-05-26 03:06:03', 'a', 'a', 'a', 'a', 'json_pare_vb_net.JPG', 'Account Comoromise', NULL, NULL, '708CF', '1', '2019-04-30 15:25:45', 1);
 
 -- --------------------------------------------------------
 
@@ -116,24 +121,28 @@ INSERT INTO `aduan_siber` (`id_aduan`, `id_pelapor`, `id_admin1`, `id_admin2`, `
 CREATE TABLE `balas_aduan` (
   `id` int(11) NOT NULL,
   `id_aduan` int(11) NOT NULL,
-  `d1` int(11) NOT NULL,
-  `d2` int(11) NOT NULL,
-  `d3` int(11) NOT NULL,
-  `d4` int(11) NOT NULL,
-  `p2` int(11) NOT NULL
+  `d11` int(11) NOT NULL,
+  `d12` int(11) NOT NULL,
+  `d13` int(11) NOT NULL,
+  `d14` int(11) NOT NULL,
+  `d21` int(11) NOT NULL,
+  `d22` int(11) NOT NULL,
+  `d23` int(11) NOT NULL,
+  `d31` int(11) NOT NULL,
+  `d32` int(11) NOT NULL,
+  `d33` int(11) NOT NULL,
+  `p4` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data untuk tabel `balas_aduan`
 --
 
-INSERT INTO `balas_aduan` (`id`, `id_aduan`, `d1`, `d2`, `d3`, `d4`, `p2`) VALUES
-(3, 3, 1, 0, 0, 1, 0),
-(4, 5, 1, 0, 0, 0, 0),
-(5, 6, 0, 1, 1, 0, 0),
-(6, 1, 1, 0, 0, 0, 0),
-(7, 7, 0, 1, 0, 0, 1),
-(8, 9, 1, 1, 1, 1, 1);
+INSERT INTO `balas_aduan` (`id`, `id_aduan`, `d11`, `d12`, `d13`, `d14`, `d21`, `d22`, `d23`, `d31`, `d32`, `d33`, `p4`) VALUES
+(4, 5, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+(6, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0),
+(7, 7, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0),
+(9, 9, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -149,7 +158,7 @@ CREATE TABLE `chat` (
   `pelapor` int(11) DEFAULT NULL,
   `chat` text NOT NULL,
   `datetime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  `status` int(11) NOT NULL DEFAULT '0',
+  `status_chat` int(11) NOT NULL DEFAULT '0',
   `file` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -157,7 +166,7 @@ CREATE TABLE `chat` (
 -- Dumping data untuk tabel `chat`
 --
 
-INSERT INTO `chat` (`id`, `id_aduan`, `id_admin1`, `id_admin2`, `pelapor`, `chat`, `datetime`, `status`, `file`) VALUES
+INSERT INTO `chat` (`id`, `id_aduan`, `id_admin1`, `id_admin2`, `pelapor`, `chat`, `datetime`, `status_chat`, `file`) VALUES
 (1, 1, 1, NULL, 0, 'ffdfdf', '2019-04-20 10:02:48', 1, ''),
 (2, 1, 1, 0, 0, 'sfsf', '2019-03-23 15:36:44', 1, ''),
 (3, 1, 1, 0, 0, 'dfdsfdsf', '2019-03-23 15:39:58', 1, ''),
@@ -165,8 +174,8 @@ INSERT INTO `chat` (`id`, `id_aduan`, `id_admin1`, `id_admin2`, `pelapor`, `chat
 (5, 1, 1, 0, 0, 'scdscdsv', '2019-03-23 15:42:29', 1, ''),
 (6, 1, 1, 0, 0, 'scdscdsv', '2019-03-23 15:42:33', 1, ''),
 (8, 1, 1, 0, 0, '------------------------------------------------------', '2019-03-24 05:39:30', 1, ''),
-(9, 1, 0, 0, 0, 'skds', '2019-03-24 05:21:16', 0, ''),
-(10, 1, 0, 3, 0, 'kkk', '2019-03-24 05:23:16', 0, ''),
+(9, 1, 0, 0, 0, 'skds', '2019-05-26 03:59:44', 1, ''),
+(10, 1, 0, 3, 0, 'kkk', '2019-05-26 03:59:58', 0, ''),
 (11, 7, 0, 1, 0, 'Mantap', '2019-04-17 10:35:17', 1, ''),
 (12, 7, 1, 0, 0, 'Lanjutkan', '2019-04-17 10:43:25', 1, ''),
 (13, 7, 0, 0, 6, 'siap', '2019-04-20 10:30:23', 1, ''),
@@ -181,8 +190,11 @@ INSERT INTO `chat` (`id`, `id_aduan`, `id_admin1`, `id_admin2`, `pelapor`, `chat
 (34, 7, 0, 1, NULL, 'okok', '2019-04-23 07:07:47', 0, ''),
 (36, 7, 0, 1, NULL, 'yo', '2019-04-23 07:17:34', 0, ''),
 (43, 9, 0, NULL, 4, '', '2019-05-18 07:44:09', 1, 'Capture.JPG'),
-(44, 1, 0, 1, NULL, 'yo', '2019-05-18 07:46:39', 0, ''),
-(45, 3, 0, 1, NULL, 'yoo', '2019-05-18 09:11:07', 0, '');
+(44, 1, 0, 1, NULL, 'yo', '2019-05-26 03:52:48', 1, ''),
+(45, 3, 0, 1, NULL, 'yoo', '2019-05-18 09:11:07', 0, ''),
+(47, 5, 0, 1, NULL, 'pppp', '2019-05-26 03:50:21', 0, ''),
+(48, 1, 1, 0, NULL, 'jasjajas', '2019-05-26 04:00:06', 1, ''),
+(49, 5, 0, 1, NULL, 'nmnmnmn', '2019-05-26 04:01:17', 1, '');
 
 -- --------------------------------------------------------
 
@@ -198,22 +210,30 @@ CREATE TABLE `pelapor` (
   `password` text NOT NULL,
   `no_id` varchar(11) NOT NULL,
   `nama_org` varchar(100) NOT NULL,
-  `alamat_org` text NOT NULL
+  `alamat_org` text NOT NULL,
+  `status` int(11) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data untuk tabel `pelapor`
 --
 
-INSERT INTO `pelapor` (`id_pelapor`, `nama_pelapor`, `no_telp`, `email`, `password`, `no_id`, `nama_org`, `alamat_org`) VALUES
-(2, 'Pelapor 1', '0861384716', 'wildanzhq@gmail.com', '76efb51a6f471449ccf1463e635053fc0bac7625', '18517541511', '', ''),
-(3, 'Pelapor 2', '0861384716', 'rizaldi.wahaz@gmail.com', '0e3282ddd72fba2c5c302d30d18437c7d6823372', '985175415', '', ''),
-(4, 'Waluyo', '1', 'a@a.com', '86f7e437faa5a7fce15d1ddcb9eaeaea377667b8', '1', '', ''),
-(6, 'Wahaz', '123', 'o@o.com', '7a81af3e591ac713f81ea1efe93dcf36157d8376', '098', 'o', 'o'),
-(7, 'rico', '000', 'a@g.com', '70c881d4a26984ddce795f6f71817c9cf4480e79', '000', '', ''),
-(8, 'a', 'a', 'ricoosetyawan@gmail.com', '86f7e437faa5a7fce15d1ddcb9eaeaea377667b8', '1', '', ''),
-(9, 'nama', '1212312312', 'nama@mail.com', '5baa61e4c9b93f3f0682250b6cf8331b7ee68fd8', '123123123', '', ''),
-(10, 'mauli', '087654566677', 'adsdasddasd@gmail.com', '331a4f44a6a875b2ce139ae0c9ce5bb5e1ec0d97', '-12', '', '');
+INSERT INTO `pelapor` (`id_pelapor`, `nama_pelapor`, `no_telp`, `email`, `password`, `no_id`, `nama_org`, `alamat_org`, `status`) VALUES
+(2, 'Pelapor 1', '0861384716', 'wildanzhq@gmail.com', '76efb51a6f471449ccf1463e635053fc0bac7625', '18517541511', '', '', 0),
+(3, 'Pelapor 2', '0861384716', 'rizaldi.wahaz@gmail.com', '0e3282ddd72fba2c5c302d30d18437c7d6823372', '985175415', '', '', 0),
+(4, 'Waluyo', '1', 'a@a.com', '86f7e437faa5a7fce15d1ddcb9eaeaea377667b8', '13452343', '', '', 1),
+(6, 'Wahaz', '123', 'o@o.com', '7a81af3e591ac713f81ea1efe93dcf36157d8376', '098', 'o', 'ojnjnjn', 0),
+(8, 'a', 'a', 'ricoosetyawan@gmail.com', '86f7e437faa5a7fce15d1ddcb9eaeaea377667b8', '1', '', '', 0),
+(9, 'nama', '1212312312', 'nama@mail.com', '5baa61e4c9b93f3f0682250b6cf8331b7ee68fd8', '123123123', '', '', 0),
+(13, 'p', '0', 'p@p.com', '516b9783fca517eecbd1d064da2d165310b19759', '0', '', '', 0),
+(14, 'l', '0', 'l@l.com', '07c342be6e560e7f43842e2e21b774e61d85f047', '0', '', '', 0),
+(15, 'm', '0', 'm@m.com', '6b0d31c0d563223024da45691584643ac78c96e8', '0', '', '', 0),
+(16, 'm', '0', 'm@m.com', '6b0d31c0d563223024da45691584643ac78c96e8', '0', '', '', 0),
+(17, 'm', '0', 'm@m.com', '6b0d31c0d563223024da45691584643ac78c96e8', '0', '', '', 0),
+(18, 'k', '0', 'k@k.com', '13fbd79c3d390e5d6585a21e11ff5ec1970cff0c', '0', '', '', 0),
+(19, 'n', '0', 'n@n.com', 'e9d71f5ee7c92d6dc9e92ffdad17b8bd49418f98', '0', '', '', 0),
+(20, 'u', '0', 'u@u.com', '51e69892ab49df85c6230ccc57f8e1d1606caccc', '0', '', '', 1),
+(21, 'b', '0', 'b@b.com', 'e9d71f5ee7c92d6dc9e92ffdad17b8bd49418f98', '0', '', '', 1);
 
 --
 -- Indexes for dumped tables
@@ -273,7 +293,7 @@ ALTER TABLE `admin_1`
 -- AUTO_INCREMENT for table `admin_2`
 --
 ALTER TABLE `admin_2`
-  MODIFY `id_admin2` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_admin2` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 --
 -- AUTO_INCREMENT for table `aduan_siber`
 --
@@ -283,17 +303,17 @@ ALTER TABLE `aduan_siber`
 -- AUTO_INCREMENT for table `balas_aduan`
 --
 ALTER TABLE `balas_aduan`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 --
 -- AUTO_INCREMENT for table `chat`
 --
 ALTER TABLE `chat`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
 --
 -- AUTO_INCREMENT for table `pelapor`
 --
 ALTER TABLE `pelapor`
-  MODIFY `id_pelapor` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id_pelapor` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 --
 -- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
 --
